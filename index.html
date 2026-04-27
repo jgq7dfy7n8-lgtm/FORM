@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="FORM">
+<title>FORM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; background: #0a0a0a; color: #fff; font-family: 'DM Sans', sans-serif; overflow: hidden; overscroll-behavior: none; -webkit-user-select: none; user-select: none; }
+  #app { position: fixed; inset: 0; display: flex; flex-direction: column; padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom); }
+
+/* ============ SHARED ============ */
+.scroll { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+
+/* ============ LIBRARY (HOME) ============ */
+.library { flex: 1; display: flex; flex-direction: column; padding: 24px 20px; }
+.lib-brand { font-family: ‘Bebas Neue’, sans-serif; font-size: 56px; line-height: 1; letter-spacing: 0.08em; margin-top: 16px; }
+.lib-tag { font-family: ‘Bebas Neue’, sans-serif; font-size: 13px; letter-spacing: 0.3em; color: #00e676; margin-bottom: 8px; }
+.lib-sub { color: rgba(255,255,255,0.55); font-size: 13px; margin-bottom: 28px; }
+
+.lib-section-label { font-family: ‘Bebas Neue’, sans-serif; font-size: 13px; letter-spacing: 0.25em; color: rgba(255,255,255,0.45); margin: 8px 0 12px; }
+
+.lib-list { display: flex; flex-direction: column; gap: 12px; flex: 1; overflow-y: auto; padding-bottom: 20px; }
+.workout-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 18px 18px 16px; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.1s; }
+.workout-card:active { transform: scale(0.99); }
+.workout-card.fatloss { border-left: 3px solid #ff5252; }
+.workout-card.push { border-left: 3px solid #00e676; }
+.workout-card.pull { border-left: 3px solid #40c4ff; }
+.workout-card.lower { border-left: 3px solid #ffb74d; }
+.workout-card.upper { border-left: 3px solid #ba68c8; }
+.workout-card.recovery { border-left: 3px solid #80deea; }
+.workout-card.custom { border-left: 3px solid rgba(255,255,255,0.4); }
+
+.card-eyebrow { font-family: ‘Bebas Neue’, sans-serif; font-size: 11px; letter-spacing: 0.25em; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+.card-title { font-family: ‘Bebas Neue’, sans-serif; font-size: 28px; line-height: 1; letter-spacing: 0.02em; margin-bottom: 8px; }
+.card-meta { display: flex; gap: 12px; font-size: 12px; color: rgba(255,255,255,0.55); }
+.card-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.card-arrow { position: absolute; top: 50%; right: 18px; transform: translateY(-50%); font-family: ‘Bebas Neue’, sans-serif; font-size: 24px; color: rgba(255,255,255,0.3); }
+
+/* ============ DETAIL / START SCREEN ============ */
+.detail { flex: 1; display: flex; flex-direction: column; }
+.detail-top { display: flex; align-items: center; padding: 16px 20px 8px; }
+.icon-btn { background: none; border: none; color: rgba(255,255,255,0.7); font-family: ‘DM Sans’, sans-serif; font-size: 14px; padding: 6px 8px 6px 0; }
+.detail-scroll { flex: 1; overflow-y: auto; padding: 0 24px 24px; }
+
+.detail-header { margin: 8px 0 24px; }
+.detail-eyebrow { font-family: ‘Bebas Neue’, sans-serif; font-size: 13px; letter-spacing: 0.3em; color: #00e676; margin-bottom: 6px; }
+.detail-title { font-family: ‘Bebas Neue’, sans-serif; font-size: 56px; line-height: 0.92; letter-spacing: 0.01em; margin-bottom: 14px; }
+.detail-sub { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.5; }
+
+.stats-row { display: flex; gap: 10px; margin-bottom: 24px; }
+.stat { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 14px 12px; text-align: center; }
+.stat-num { font-family: ‘Bebas Neue’, sans-serif; font-size: 32px; line-height: 1; color: #00e676; margin-bottom: 4px; }
+.stat-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+.section-block { margin-bottom: 14px; padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; }
+.section-block.warmup { border-left: 3px solid #ffb74d; }
+.section-block.strength { border-left: 3px solid #00e676; }
+.section-block.metcon { border-left: 3px solid #ff5252; }
+.section-block.core { border-left: 3px solid #40c4ff; }
+.section-block.recovery { border-left: 3px solid #80deea; }
+.section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.section-name { font-family: ‘Bebas Neue’, sans-serif; font-size: 17px; letter-spacing: 0.16em; }
+.section-rounds { font-family: ‘Bebas Neue’, sans-serif; font-size: 14px; letter-spacing: 0.15em; }
+.section-block.warmup .section-rounds { color: #ffb74d; }
+.section-block.strength .section-rounds { color: #00e676; }
+.section-block.metcon .section-rounds { color: #ff5252; }
+.section-block.core .section-rounds { color: #40c4ff; }
+.section-block.recovery .section-rounds { color: #80deea; }
+.ex-mini-list { display: flex; flex-direction: column; gap: 4px; }
+.ex-mini { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.ex-mini:last-child { border-bottom: none; }
+.ex-mini-name { color: rgba(255,255,255,0.85); }
+.pair-tag { display: inline-block; font-family: ‘Bebas Neue’, sans-serif; font-size: 11px; color: #ff5252; margin-right: 6px; letter-spacing: 0.1em; padding: 2px 5px; background: rgba(255,82,82,0.1); border-radius: 4px; }
+.ex-mini-detail { color: rgba(255,255,255,0.45); font-size: 12px; }
+
+.start-cta { margin: 12px 0 24px; width: 100%; padding: 20px; background: #00e676; color: #0a0a0a; border: none; border-radius: 14px; font-family: ‘Bebas Neue’, sans-serif; font-size: 24px; letter-spacing: 0.18em; cursor: pointer; }
+.start-cta:active { transform: scale(0.99); }
+
+/* ============ RUNNING SCREEN ============ */
+.pips { display: flex; gap: 4px; padding: 12px 16px 8px; }
+.pip { flex: 1; height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; overflow: hidden; position: relative; }
+.pip-fill { position: absolute; inset: 0; background: #00e676; transform: translateX(-100%); transition: transform 0.2s linear; }
+.pip.done .pip-fill { transform: translateX(0); }
+.pip.active .pip-fill { transform: translateX(0); }
+.topbar { display: flex; align-items: center; justify-content: space-between; padding: 4px 16px 12px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+.back { background: none; border: none; color: rgba(255,255,255,0.7); font-family: ‘DM Sans’, sans-serif; font-size: 13px; padding: 6px 10px 6px 0; letter-spacing: 0.05em; }
+.phase { font-family: ‘Bebas Neue’, sans-serif; letter-spacing: 0.18em; font-size: 13px; }
+.phase.warmup { color: #ffb74d; }
+.phase.strength { color: #00e676; }
+.phase.metcon { color: #ff5252; }
+.phase.core { color: #40c4ff; }
+.phase.recovery { color: #80deea; }
+.phase.rest { color: #40c4ff; }
+
+.round-banner { margin: 0 16px 8px; padding: 10px 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; display: flex; justify-content: space-between; align-items: center; }
+.round-banner.warmup { border-left: 3px solid #ffb74d; }
+.round-banner.strength { border-left: 3px solid #00e676; }
+.round-banner.metcon { border-left: 3px solid #ff5252; }
+.round-banner.core { border-left: 3px solid #40c4ff; }
+.round-banner.recovery { border-left: 3px solid #80deea; }
+.round-banner.rest { border-left: 3px solid #40c4ff; }
+.round-block { font-family: ‘Bebas Neue’, sans-serif; font-size: 14px; letter-spacing: 0.2em; color: rgba(255,255,255,0.85); }
+.round-counter { font-family: ‘Bebas Neue’, sans-serif; font-size: 18px; letter-spacing: 0.15em; color: #fff; }
+.round-counter .total { color: rgba(255,255,255,0.4); }
+
+.card { flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 12px 24px 20px; position: relative; }
+.ex-num { font-family: ‘Bebas Neue’, sans-serif; font-size: 14px; letter-spacing: 0.25em; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+.ex-name { font-family: ‘Bebas Neue’, sans-serif; font-size: 50px; line-height: 0.95; letter-spacing: 0.01em; margin-bottom: 14px; }
+.ex-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.meta-pill { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); }
+.meta-pill.accent { background: rgba(0,230,118,0.12); border-color: rgba(0,230,118,0.4); color: #00e676; }
+.meta-pill.pair { background: rgba(255,82,82,0.12); border-color: rgba(255,82,82,0.4); color: #ff5252; }
+.ex-cue { font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.7); margin-bottom: 14px; }
+.pair-preview { background: rgba(255,82,82,0.06); border: 1px solid rgba(255,82,82,0.18); border-radius: 10px; padding: 10px 12px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.pair-label { font-family: ‘Bebas Neue’, sans-serif; font-size: 11px; letter-spacing: 0.2em; color: #ff5252; }
+.pair-text { font-size: 13px; color: rgba(255,255,255,0.75); flex: 1; }
+
+.center-area { flex: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; min-height: 100px; }
+.timer { font-family: ‘Bebas Neue’, sans-serif; font-size: 130px; line-height: 1; letter-spacing: 0.01em; color: #fff; font-variant-numeric: tabular-nums; }
+.timer.rest { color: #40c4ff; }
+.timer.warmup { color: #ffb74d; }
+.timer.recovery { color: #80deea; }
+.timer.paused { opacity: 0.35; }
+.timer-label { font-family: ‘Bebas Neue’, sans-serif; font-size: 14px; letter-spacing: 0.3em; color: rgba(255,255,255,0.5); }
+.pause-btn { margin-top: 6px; padding: 12px 32px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: ‘Bebas Neue’, sans-serif; font-size: 16px; letter-spacing: 0.2em; border-radius: 100px; cursor: pointer; min-width: 150px; }
+.pause-btn.paused { background: rgba(0,230,118,0.15); border-color: #00e676; color: #00e676; }
+.pause-btn:active { transform: scale(0.97); }
+
+.bottom { display: flex; flex-direction: column; gap: 8px; }
+.next-btn { width: 100%; padding: 18px; background: #00e676; color: #0a0a0a; border: none; border-radius: 14px; font-family: ‘Bebas Neue’, sans-serif; font-size: 22px; letter-spacing: 0.15em; cursor: pointer; transition: transform 0.1s, opacity 0.15s; }
+.next-btn.rest { background: #40c4ff; }
+.next-btn.warmup { background: #ffb74d; }
+.next-btn.metcon { background: #ff5252; color: #fff; }
+.next-btn.recovery { background: #80deea; color: #0a0a0a; }
+.next-btn:active { transform: scale(0.98); }
+.skip-btn { background: transparent; color: rgba(255,255,255,0.4); border: none; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; padding: 8px; }
+
+/* Overview drawer handle */
+.drawer-handle { display: flex; flex-direction: column; align-items: center; padding: 10px 0 4px; cursor: pointer; }
+.handle-bar { width: 40px; height: 4px; background: rgba(255,255,255,0.25); border-radius: 2px; margin-bottom: 4px; }
+.handle-text { font-family: ‘Bebas Neue’, sans-serif; font-size: 11px; letter-spacing: 0.25em; color: rgba(255,255,255,0.45); }
+
+/* Overview drawer */
+.drawer-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 50; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+.drawer-backdrop.open { opacity: 1; pointer-events: auto; }
+.drawer { position: fixed; left: 0; right: 0; bottom: 0; max-height: 85vh; background: #141414; border-radius: 24px 24px 0 0; z-index: 51; transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1); display: flex; flex-direction: column; padding-bottom: env(safe-area-inset-bottom); }
+.drawer.open { transform: translateY(0); }
+.drawer-top { padding: 12px 0 8px; display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.drawer-grab { width: 44px; height: 5px; background: rgba(255,255,255,0.25); border-radius: 3px; margin-bottom: 14px; }
+.drawer-title { font-family: ‘Bebas Neue’, sans-serif; font-size: 28px; letter-spacing: 0.05em; padding: 0 24px 4px; align-self: flex-start; }
+.drawer-sub { font-size: 12px; color: rgba(255,255,255,0.5); padding: 0 24px 14px; align-self: flex-start; letter-spacing: 0.05em; }
+.drawer-list { overflow-y: auto; padding: 0 20px 24px; -webkit-overflow-scrolling: touch; }
+
+.ov-block { margin-bottom: 14px; padding: 12px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; }
+.ov-block.warmup { border-left: 3px solid #ffb74d; }
+.ov-block.strength { border-left: 3px solid #00e676; }
+.ov-block.metcon { border-left: 3px solid #ff5252; }
+.ov-block.core { border-left: 3px solid #40c4ff; }
+.ov-block.recovery { border-left: 3px solid #80deea; }
+.ov-block.current { background: rgba(0,230,118,0.08); border-color: rgba(0,230,118,0.4); }
+.ov-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+.ov-label { font-family: ‘Bebas Neue’, sans-serif; font-size: 14px; letter-spacing: 0.16em; }
+.ov-rounds { font-family: ‘Bebas Neue’, sans-serif; font-size: 12px; letter-spacing: 0.15em; color: rgba(255,255,255,0.55); }
+.ov-list { display: flex; flex-direction: column; gap: 2px; }
+.ov-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.ov-row:last-child { border-bottom: none; }
+.ov-row.current-ex { color: #00e676; font-weight: 500; }
+.ov-row.done-ex { color: rgba(255,255,255,0.35); }
+.ov-row.done-ex .ov-row-name { text-decoration: line-through; }
+.ov-row-name { flex: 1; }
+.ov-row-detail { color: rgba(255,255,255,0.4); font-size: 11px; }
+.ov-row.current-ex .ov-row-detail { color: #00e676; }
+.ov-marker { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 8px; vertical-align: middle; background: rgba(255,255,255,0.15); }
+.ov-row.current-ex .ov-marker { background: #00e676; box-shadow: 0 0 8px #00e676; }
+.ov-row.done-ex .ov-marker { background: rgba(255,255,255,0.3); }
+
+/* Done screen */
+.done { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; gap: 18px; }
+.done-icon { font-family: ‘Bebas Neue’, sans-serif; font-size: 100px; color: #00e676; line-height: 1; }
+.done-title { font-family: ‘Bebas Neue’, sans-serif; font-size: 56px; letter-spacing: 0.04em; }
+.done-sub { color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.5; max-width: 280px; }
+.done-btn { margin-top: 16px; padding: 16px 32px; background: rgba(0,230,118,0.15); border: 1px solid #00e676; color: #00e676; border-radius: 12px; font-family: ‘Bebas Neue’, sans-serif; font-size: 18px; letter-spacing: 0.2em; }
+
+.glow { position: absolute; width: 320px; height: 320px; border-radius: 50%; filter: blur(90px); opacity: 0.18; pointer-events: none; z-index: 0; }
+.glow.warmup { background: #ffb74d; top: -100px; right: -80px; }
+.glow.strength { background: #00e676; top: -100px; right: -80px; }
+.glow.metcon { background: #ff5252; top: -100px; right: -80px; }
+.glow.core { background: #40c4ff; top: -100px; right: -80px; }
+.glow.recovery { background: #80deea; top: -100px; right: -80px; }
+.glow.rest { background: #40c4ff; top: -100px; right: -80px; }
+.card-content { position: relative; z-index: 2; display: flex; flex-direction: column; height: 100%; justify-content: space-between; }
+</style>
+
+</head>
+<body>
+<div id="app"></div>
+<div class="drawer-backdrop" id="drawer-backdrop"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-top">
+    <div class="drawer-grab"></div>
+  </div>
+  <div class="drawer-title" id="drawer-title">PROGRAM</div>
+  <div class="drawer-sub" id="drawer-sub"></div>
+  <div class="drawer-list" id="drawer-list"></div>
+</div>
+
+<script>
+// ============================================================
+// FORM — WORKOUT LIBRARY
+// ============================================================
+// To add a new workout: copy one of the objects below and add it
+// to the `workouts` array. Each workout needs:
+//   id, name, eyebrow, theme (color), description, sections (overview),
+//   blocks (the actual sequence with phase/type/etc.)
+//
+// Phases: "warmup" | "strength" | "metcon" | "core" | "recovery" | "rest"
+// Types:  "timed" (needs duration in seconds) | "reps" (needs reps string)
+// Optional per block: blockLabel, roundCurrent, roundTotal, pair, pairWith, cue, detail
+// ============================================================
+
+const workouts = [
+
+  // -------- 1. FAT LOSS — FULL BODY --------
+  {
+    id: "fatloss",
+    name: "FAT LOSS — FULL BODY",
+    eyebrow: "BURN • SUPERSETS",
+    theme: "fatloss",
+    description: "Dynamic warmup, paired strength, paired metcon supersets, and a paired core finisher. Built around supersets to keep heart rate elevated.",
+    sections: [
+      { label: "WARM UP", rounds: "4 EXERCISES", cls: "warmup", items: [
+        { name: "Incline Treadmill Walk", detail: "3 min" },
+        { name: "World's Greatest Stretch", detail: "60 sec" },
+        { name: "Glute Bridges", detail: "45 sec" },
+        { name: "Band Pull-Aparts + CARs", detail: "45 sec" }
+      ]},
+      { label: "STRENGTH — PAIR A", rounds: "3 ROUNDS", cls: "strength", items: [
+        { name: "Goblet Squat", detail: "10 reps", pair: "A1" },
+        { name: "DB Romanian Deadlift", detail: "10 reps", pair: "A2" }
+      ]},
+      { label: "METCON — PAIR B", rounds: "3 ROUNDS", cls: "metcon", items: [
+        { name: "DB Thrusters", detail: "40 sec", pair: "B1" },
+        { name: "DB Renegade Row", detail: "40 sec", pair: "B2" }
+      ]},
+      { label: "METCON — PAIR C", rounds: "3 ROUNDS", cls: "metcon", items: [
+        { name: "Kettlebell Swings", detail: "40 sec", pair: "C1" },
+        { name: "Jump Squats", detail: "40 sec", pair: "C2" }
+      ]},
+      { label: "CORE — PAIR D", rounds: "2 ROUNDS", cls: "core", items: [
+        { name: "Plank", detail: "45 sec", pair: "D1" },
+        { name: "Russian Twists", detail: "30 sec", pair: "D2" }
+      ]},
+      { label: "CORE FINISHER", rounds: "2 ROUNDS", cls: "core", items: [
+        { name: "Hanging Knee Raises", detail: "30 sec" }
+      ]}
+    ],
+    blocks: [
+      { phase: "warmup", type: "timed", name: "Incline Treadmill Walk", duration: 180, blockLabel: "WARM UP", roundCurrent: 1, roundTotal: 4, cue: "5° incline, 3.5 mph. Get the heart rate up. Nasal breathing.", detail: "3 min" },
+      { phase: "warmup", type: "timed", name: "World's Greatest Stretch", duration: 60, blockLabel: "WARM UP", roundCurrent: 2, roundTotal: 4, cue: "Alternate sides. Lunge → twist → reach. Open hips and T-spine.", detail: "60 sec" },
+      { phase: "warmup", type: "timed", name: "Glute Bridges", duration: 45, blockLabel: "WARM UP", roundCurrent: 3, roundTotal: 4, cue: "Squeeze glutes hard at the top. Wakes up the posterior chain.", detail: "45 sec" },
+      { phase: "warmup", type: "timed", name: "Band Pull-Aparts + Shoulder CARs", duration: 45, blockLabel: "WARM UP", roundCurrent: 4, roundTotal: 4, cue: "Light band. Pinch shoulder blades. Then big shoulder circles.", detail: "45 sec" },
+
+      { phase: "strength", type: "reps", name: "Goblet Squat", reps: "10", blockLabel: "STRENGTH PAIR A", roundCurrent: 1, roundTotal: 3, pair: "A1", pairWith: "DB Romanian Deadlift", cue: "DB or KB at chest. Sit between heels. Drive up through midfoot.", detail: "10 reps" },
+      { phase: "rest", type: "timed", name: "Rest", duration: 20, blockLabel: "STRENGTH PAIR A", roundCurrent: 1, roundTotal: 3, cue: "Quick reset. RDL coming up.", detail: "20 sec" },
+      { phase: "strength", type: "reps", name: "DB Romanian Deadlift", reps: "10", blockLabel: "STRENGTH PAIR A", roundCurrent: 1, roundTotal: 3, pair: "A2", pairWith: "Goblet Squat", cue: "Hinge from the hips. Soft knee. Hamstrings stretch, glutes finish.", detail: "10 reps" },
+      { phase: "rest", type: "timed", name: "Round Rest", duration: 60, blockLabel: "STRENGTH PAIR A", roundCurrent: 1, roundTotal: 3, cue: "60 sec. 2 rounds left of pair A.", detail: "60 sec" },
+      { phase: "strength", type: "reps", name: "Goblet Squat", reps: "10", blockLabel: "STRENGTH PAIR A", roundCurrent: 2, roundTotal: 3, pair: "A1", pairWith: "DB Romanian Deadlift", cue: "Round 2. Add weight if round 1 felt easy.", detail: "10 reps" },
+      { phase: "rest", type: "timed", name: "Rest", duration: 20, blockLabel: "STRENGTH PAIR A", roundCurrent: 2, roundTotal: 3, cue: "Quick reset.", detail: "20 sec" },
+      { phase: "strength", type: "reps", name: "DB Romanian Deadlift", reps: "10", blockLabel: "STRENGTH PAIR A", roundCurrent: 2, roundTotal: 3, pair: "A2", pairWith: "Goblet Squat", cue: "Stay long, stay tight. Don't rush the hinge.", detail: "10 reps" },
+      { phase: "rest", type: "timed", name: "Round Rest", duration: 60, blockLabel: "STRENGTH PAIR A", roundCurrent: 2, roundTotal: 3, cue: "Last round of pair A coming up.", detail: "60 sec" },
+      { phase: "strength", type: "reps", name: "Goblet Squat", reps: "10", blockLabel: "STRENGTH PAIR A", roundCurrent: 3, roundTotal: 3, pair: "A1", pairWith: "DB Romanian Deadlift", cue: "Final round. Smooth and controlled.", detail: "10 reps" },
+      { phase: "rest", type: "timed", name: "Rest", duration: 20, blockLabel: "STRENGTH PAIR A", roundCurrent: 3, roundTotal: 3, cue: "Last RDL set incoming.", detail: "20 sec" },
+      { phase: "strength", type: "reps", name: "DB Romanian Deadlift", reps: "10", blockLabel: "STRENGTH PAIR A", roundCurrent: 3, roundTotal: 3, pair: "A2", pairWith: "Goblet Squat", cue: "Last set. Finish strong.", detail: "10 reps" },
+      { phase: "rest", type: "timed", name: "Transition", duration: 75, blockLabel: "STRENGTH → METCON", cue: "Catch your breath. Pair B (Thrusters + Renegade Rows) up next.", detail: "75 sec" },
+
+      { phase: "metcon", type: "timed", name: "DB Thrusters", duration: 40, blockLabel: "METCON PAIR B", roundCurrent: 1, roundTotal: 3, pair: "B1", pairWith: "DB Renegade Row", cue: "Squat to overhead press. Use legs to drive the weight up.", detail: "40 sec" },
+      { phase: "rest", type: "timed", name: "Transition", duration: 20, blockLabel: "METCON PAIR B", roundCurrent: 1, roundTotal: 3, cue: "Drop the DBs to the floor for renegade rows.", detail: "20 sec" },
+      { phase: "metcon", type: "timed", name: "DB Renegade Row", duration: 40, blockLabel: "METCON PAIR B", roundCurrent: 1, roundTotal: 3, pair: "B2", pairWith: "DB Thrusters", cue: "Plank on DBs. Row each side. Don't let hips rotate.", detail: "40 sec" },
+      { phase: "rest", type: "timed", name: "Round Rest", duration: 45, blockLabel: "METCON PAIR B", roundCurrent: 1, roundTotal: 3, cue: "45 sec. Pair B round 2 incoming.", detail: "45 sec" },
+      { phase: "metcon", type: "timed", name: "DB Thrusters", duration: 40, blockLabel: "METCON PAIR B", roundCurrent: 2, roundTotal: 3, pair: "B1", pairWith: "DB Renegade Row", cue: "Round 2. Find a rhythm. Breathe at the top.", detail: "40 sec" },
+      { phase: "rest", type: "timed", name: "Transition", duration: 20, blockLabel: "METCON PAIR B", roundCurrent: 2, roundTotal: 3, cue: "Down to plank.", detail: "20 sec" },
+      { phase: "metcon", type: "timed", name: "DB Renegade Row", duration: 40, blockLabel: "METCON PAIR B", roundCurrent: 2, roundTotal: 3, pair: "B2", pairWith: "DB Thrusters", cue: "Tight core. Pull hard.", detail: "40 sec" },
+      { phase: "rest", type: "timed", name: "Round Rest", duration: 45, blockLabel: "METCON PAIR B", roundCurrent: 2, roundTotal: 3, cue: "One round left of pair B.", detail: "45 sec" },
+      { phase: "metcon", type: "timed", name: "DB Thrusters", duration: 40, blockLabel: "METCON PAIR B", roundCurrent: 3, roundTotal: 3, pair: "B1", pairWith: "DB Renegade Row", cue: "Final round. Empty the tank.", detail: "40 sec" },
+      { phase: "rest", type: "timed", name: "Transition", duration: 20, blockLabel: "METCON PAIR B", roundCurrent: 3, roundTotal: 3, cue: "Last superset.", detail: "20 sec" },
+      { phase: "metcon", type: "timed", name: "DB Renegade Row", duration: 40, blockLabel: "METCON PAIR B", roundCurrent: 3, roundTotal: 3, pair: "B2", pairWith: "DB Thrusters", cue: "Last B2. Pair C up next — KB swings + jump squats.", detail: "40 sec" },
+      { phase: "rest", type: "timed", name: "Transition", duration: 75, blockLabel: "PAIR B → PAIR C", cue: "Grab a kettlebell. 75 sec to set up.", detail: "75 sec" },
+
+      { phase: "metcon", type: "timed", name: "Kettlebell Swings", duration: 40, blockLabel: "METCON PAIR C", roundCurrent: 1, roundTotal: 3, pair: "C1", pairWith: "Jump Squats", cue: "Hip hinge, not a squat. Snap the hips — kettlebell to chest height. Power from the glutes.", detail: "40 sec" },
+      { phase: "rest", type: "timed", name: "Transition", duration: 20, blockLabel: "METCON PAIR C", roundCurrent: 1, roundTotal: 3, cue: "Drop the bell. Clear space for jump squats.", detail: "20 sec" },
+      { phase: "metcon", type: "timed", name: "Jump Squats", duration: 40, blockLabel: "METCON PAIR C", roundCurrent: 1, roundTotal: 3, pair: "C2", pairWith: "Kettlebell Swings", cue: "Explode up. Soft landing. Sub regular squats if gassed.", detail: "40 sec" },
+      { phase: "rest", type: "timed", name: "Round Rest", duration: 45, blockLabel: "METCON PAIR C", roundCurrent: 1, roundTotal: 3, cue: "45 sec. 2 rounds of pair C left.", detail: "45 sec" },
+      { phase: "metcon", type: "timed", name: "Kettlebell Swings", duration: 40, blockLabel: "METCON PAIR C", roundCurrent: 2, roundTotal: 3, pair: "C1", pairWith: "Jump Squats", cue: "Round 2. Same hip snap. Don't let the bell drag you forward.", detail: "40 sec" },
+      { phase: "rest", type: "timed", name: "Transition", duration: 20, blockLabel: "METCON PAIR C", roundCurrent: 2, roundTotal: 3, cue: "Drop the bell. Clear space.", detail: "20 sec" },
+      { phase: "metcon", type: "timed", name: "Jump Squats", duration: 40, blockLabel: "METCON PAIR C", roundCurrent: 2, roundTotal: 3, pair: "C2", pairWith: "Kettlebell Swings", cue: "Stay explosive even when it burns.", detail: "40 sec" },
+      { phase: "rest", type: "timed", name: "Round Rest", duration: 45, blockLabel: "METCON PAIR C", roundCurrent: 2, roundTotal: 3, cue: "Last round.", detail: "45 sec" },
+      { phase: "metcon", type: "timed", name: "Kettlebell Swings", duration: 40, blockLabel: "METCON PAIR C", roundCurrent: 3, roundTotal: 3, pair: "C1", pairWith: "Jump Squats", cue: "Final round of swings. Crisp, powerful reps.", detail: "40 sec" },
+      { phase: "rest", type: "timed", name: "Transition", duration: 20, blockLabel: "METCON PAIR C", roundCurrent: 3, roundTotal: 3, cue: "Last exercise of the metcon.", detail: "20 sec" },
+      { phase: "metcon", type: "timed", name: "Jump Squats", duration: 40, blockLabel: "METCON PAIR C", roundCurrent: 3, roundTotal: 3, pair: "C2", pairWith: "Kettlebell Swings", cue: "Finish strong. Just core left.", detail: "40 sec" },
+      { phase: "rest", type: "timed", name: "Recovery", duration: 75, blockLabel: "METCON → CORE", cue: "Walk it off. Heart rate down. Core finisher coming up.", detail: "75 sec" },
+
+      { phase: "core", type: "timed", name: "Plank", duration: 45, blockLabel: "CORE PAIR D", roundCurrent: 1, roundTotal: 2, pair: "D1", pairWith: "Russian Twists", cue: "Forearms down. Hips level. Squeeze glutes and quads.", detail: "45 sec" },
+      { phase: "rest", type: "timed", name: "Rest", duration: 15, blockLabel: "CORE PAIR D", roundCurrent: 1, roundTotal: 2, cue: "Quick reset.", detail: "15 sec" },
+      { phase: "core", type: "timed", name: "Russian Twists", duration: 30, blockLabel: "CORE PAIR D", roundCurrent: 1, roundTotal: 2, pair: "D2", pairWith: "Plank", cue: "DB or plate. Feet up if you can. Rotate from the trunk.", detail: "30 sec" },
+      { phase: "rest", type: "timed", name: "Round Rest", duration: 30, blockLabel: "CORE PAIR D", roundCurrent: 1, roundTotal: 2, cue: "1 round of pair D left.", detail: "30 sec" },
+      { phase: "core", type: "timed", name: "Plank", duration: 45, blockLabel: "CORE PAIR D", roundCurrent: 2, roundTotal: 2, pair: "D1", pairWith: "Russian Twists", cue: "Last plank. Hold strong.", detail: "45 sec" },
+      { phase: "rest", type: "timed", name: "Rest", duration: 15, blockLabel: "CORE PAIR D", roundCurrent: 2, roundTotal: 2, cue: "Almost done.", detail: "15 sec" },
+      { phase: "core", type: "timed", name: "Russian Twists", duration: 30, blockLabel: "CORE PAIR D", roundCurrent: 2, roundTotal: 2, pair: "D2", pairWith: "Plank", cue: "Burn it out.", detail: "30 sec" },
+      { phase: "rest", type: "timed", name: "Transition", duration: 30, blockLabel: "CORE FINISHER", cue: "One exercise left — hanging knee raises × 2.", detail: "30 sec" },
+      { phase: "core", type: "timed", name: "Hanging Knee Raises", duration: 30, blockLabel: "CORE FINISHER", roundCurrent: 1, roundTotal: 2, cue: "Hang from pull-up bar. Knees to chest. Slow on the way down.", detail: "30 sec" },
+      { phase: "rest", type: "timed", name: "Rest", duration: 30, blockLabel: "CORE FINISHER", roundCurrent: 1, roundTotal: 2, cue: "One last set.", detail: "30 sec" },
+      { phase: "core", type: "timed", name: "Hanging Knee Raises", duration: 30, blockLabel: "CORE FINISHER", roundCurrent: 2, roundTotal: 2, cue: "FINAL EXERCISE — Controlled reps to the end.", detail: "30 sec" },
+    ]
+  },
+
+  // -------- Add more workouts here using the same shape --------
+  // Example skeleton:
+  // {
+  //   id: "push", name: "PUSH DAY", eyebrow: "STRENGTH", theme: "push",
+  //   description: "...",
+  //   sections: [...],
+  //   blocks: [...]
+  // }
+
+];
+
+// ============================================================
+// APP STATE & ROUTER
+// ============================================================
+let state = {
+  screen: "library",       // library | detail | running | done
+  workoutId: null,
+  index: 0,
+  timeLeft: 0,
+  timerId: null,
+  startTime: null,
+  paused: false,
+  drawerOpen: false
+};
+
+const app = document.getElementById("app");
+const drawer = document.getElementById("drawer");
+const drawerBackdrop = document.getElementById("drawer-backdrop");
+
+function getWorkout() { return workouts.find(w => w.id === state.workoutId); }
+function fmt(s) { const m = Math.floor(s / 60); const sec = s % 60; return m > 0 ? m + ":" + sec.toString().padStart(2,"0") : ":" + sec.toString().padStart(2,"0"); }
+function vibrate(ms) { try { if (navigator.vibrate) navigator.vibrate(ms); } catch(e) {} }
+
+// ============================================================
+// LIBRARY SCREEN
+// ============================================================
+function renderLibrary() {
+  state.screen = "library";
+  state.workoutId = null;
+  closeDrawer();
+
+  let cardsHtml = "";
+  for (const w of workouts) {
+    const totalSecs = w.blocks.reduce((acc, b) => acc + (b.type === "timed" ? b.duration : 45), 0);
+    const totalMin = Math.round(totalSecs / 60);
+    const exCount = w.sections.reduce((acc, s) => acc + s.items.length, 0);
+    cardsHtml += '<div class="workout-card ' + w.theme + '" data-id="' + w.id + '">' +
+      '<div class="card-eyebrow">' + w.eyebrow + '</div>' +
+      '<div class="card-title">' + w.name + '</div>' +
+      '<div class="card-meta"><span>' + totalMin + ' min</span><span>•</span><span>' + exCount + ' exercises</span></div>' +
+      '<div class="card-arrow">→</div></div>';
+  }
+
+  app.innerHTML = '<div class="library">' +
+    '<div class="lib-tag">FORM</div>' +
+    '<div class="lib-brand">WORKOUT<br>LIBRARY</div>' +
+    '<div class="lib-sub">Tap a workout to see the program. Hit start when you\'re ready.</div>' +
+    '<div class="lib-section-label">PROGRAMS</div>' +
+    '<div class="lib-list">' + cardsHtml + '</div>' +
+    '</div>';
+
+  document.querySelectorAll(".workout-card").forEach(card => {
+    const handler = function(e){ e.preventDefault(); openDetail(card.dataset.id); };
+    card.addEventListener("touchend", handler);
+    card.addEventListener("click", handler);
+  });
+}
+
+// ============================================================
+// DETAIL SCREEN (workout overview + start button)
+// ============================================================
+function openDetail(id) {
+  state.workoutId = id;
+  state.screen = "detail";
+  renderDetail();
+}
+
+function renderDetail() {
+  const w = getWorkout();
+  if (!w) return renderLibrary();
+
+  const totalSecs = w.blocks.reduce((acc, b) => acc + (b.type === "timed" ? b.duration : 45), 0);
+  const totalMin = Math.round(totalSecs / 60);
+  const pairCount = new Set(w.sections.filter(s => s.items.some(i => i.pair)).map(s => s.label)).size;
+  const totalRounds = w.sections.reduce((acc, s) => {
+    const m = (s.rounds || "").match(/(\d+)\s*ROUNDS/i);
+    return acc + (m ? parseInt(m[1]) : 0);
+  }, 0);
+
+  let sectionsHtml = "";
+  for (const sec of w.sections) {
+    let itemsHtml = "";
+    for (const it of sec.items) {
+      const tag = it.pair ? '<span class="pair-tag">' + it.pair + '</span>' : "";
+      itemsHtml += '<div class="ex-mini"><div class="ex-mini-name">' + tag + it.name + '</div><div class="ex-mini-detail">' + it.detail + '</div></div>';
+    }
+    sectionsHtml += '<div class="section-block ' + sec.cls + '"><div class="section-head"><div class="section-name">' + sec.label + '</div><div class="section-rounds">' + sec.rounds + '</div></div><div class="ex-mini-list">' + itemsHtml + '</div></div>';
+  }
+
+  app.innerHTML = '<div class="detail">' +
+    '<div class="detail-top"><button class="icon-btn" id="back-lib">← Library</button></div>' +
+    '<div class="detail-scroll">' +
+      '<div class="detail-header">' +
+        '<div class="detail-eyebrow">' + w.eyebrow + '</div>' +
+        '<div class="detail-title">' + w.name + '</div>' +
+        '<div class="detail-sub">' + w.description + '</div>' +
+      '</div>' +
+      '<div class="stats-row">' +
+        '<div class="stat"><div class="stat-num">' + totalMin + '</div><div class="stat-label">Minutes</div></div>' +
+        '<div class="stat"><div class="stat-num">' + (pairCount || w.sections.length) + '</div><div class="stat-label">' + (pairCount ? 'Pairs' : 'Blocks') + '</div></div>' +
+        '<div class="stat"><div class="stat-num">' + (totalRounds || w.sections.length) + '</div><div class="stat-label">' + (totalRounds ? 'Rounds' : 'Sections') + '</div></div>' +
+      '</div>' +
+      sectionsHtml +
+      '<button class="start-cta" id="start-btn">START WORKOUT →</button>' +
+    '</div></div>';
+
+  document.getElementById("back-lib").addEventListener("touchend", function(e){ e.preventDefault(); renderLibrary(); });
+  document.getElementById("back-lib").addEventListener("click", renderLibrary);
+  document.getElementById("start-btn").addEventListener("touchend", function(e){ e.preventDefault(); startWorkout(); });
+  document.getElementById("start-btn").addEventListener("click", startWorkout);
+}
+
+// ============================================================
+// RUNNING SCREEN
+// ============================================================
+function startWorkout() {
+  state.screen = "running";
+  state.index = 0;
+  state.startTime = Date.now();
+  state.paused = false;
+  loadBlock();
+}
+
+function loadBlock() {
+  const w = getWorkout();
+  const b = w.blocks[state.index];
+  if (!b) { finishWorkout(); return; }
+  state.paused = false;
+  if (b.type === "timed") {
+    state.timeLeft = b.duration;
+    renderRunning();
+    startTimer();
+  } else {
+    renderRunning();
+  }
+  if (state.drawerOpen) renderDrawerContent();
+}
+
+function startTimer() {
+  clearInterval(state.timerId);
+  state.timerId = setInterval(function() {
+    if (state.paused) return;
+    state.timeLeft--;
+    updateTimerDisplay();
+    if (state.timeLeft <= 0) {
+      clearInterval(state.timerId);
+      vibrate(200);
+      next();
+    } else if (state.timeLeft <= 3) {
+      vibrate(40);
+    }
+  }, 1000);
+}
+
+function togglePause() {
+  state.paused = !state.paused;
+  vibrate(30);
+  const timerEl = document.getElementById("timer-num");
+  const btn = document.getElementById("pause-btn");
+  if (timerEl) timerEl.classList.toggle("paused", state.paused);
+  if (btn) {
+    btn.classList.toggle("paused", state.paused);
+    btn.textContent = state.paused ? "▶  RESUME" : "❚❚  PAUSE";
+  }
+}
+
+function updateTimerDisplay() {
+  const t = document.getElementById("timer-num");
+  if (t) t.textContent = fmt(state.timeLeft);
+  const fill = document.querySelector(".pip.active .pip-fill");
+  const w = getWorkout();
+  const block = w.blocks[state.index];
+  if (fill && block && block.type === "timed") {
+    const pct = 1 - (state.timeLeft / block.duration);
+    fill.style.transform = "translateX(" + ((pct - 1) * 100) + "%)";
+  }
+}
+
+function next() {
+  clearInterval(state.timerId);
+  state.index++;
+  const w = getWorkout();
+  if (state.index >= w.blocks.length) finishWorkout();
+  else loadBlock();
+}
+
+function back() {
+  clearInterval(state.timerId);
+  if (state.index > 0) { state.index--; loadBlock(); }
+}
+
+function exitToDetail() {
+  clearInterval(state.timerId);
+  closeDrawer();
+  renderDetail();
+}
+
+function renderRunning() {
+  const w = getWorkout();
+  const b = w.blocks[state.index];
+  const total = w.blocks.length;
+
+  let pipsHtml = "";
+  for (let i = 0; i < total; i++) {
+    const cls = i < state.index ? "done" : i === state.index ? "active" : "";
+    pipsHtml += '<div class="pip ' + cls + '"><div class="pip-fill"></div></div>';
+  }
+
+  const phaseLabels = { warmup: "WARM UP", strength: "STRENGTH", metcon: "METCON", core: "CORE", recovery: "RECOVERY", rest: "REST" };
+  const isRest = b.phase === "rest";
+  const colorClass = b.phase;
+
+  let roundBannerHtml = "";
+  if (b.blockLabel) {
+    const counterText = b.roundTotal ? 'ROUND ' + b.roundCurrent + '<span class="total"> / ' + b.roundTotal + '</span>' : "";
+    roundBannerHtml = '<div class="round-banner ' + colorClass + '"><div class="round-block">' + b.blockLabel + '</div><div class="round-counter">' + counterText + '</div></div>';
+  }
+
+  let pairHtml = "";
+  if (b.pair && b.pairWith) {
+    pairHtml = '<div class="pair-preview"><div class="pair-label">' + b.pair + '</div><div class="pair-text">Pairs with: <strong>' + b.pairWith + '</strong></div></div>';
+  }
+
+  let centerHtml = "";
+  if (b.type === "timed") {
+    const tcls = colorClass === "rest" ? "rest" : colorClass === "warmup" ? "warmup" : colorClass === "recovery" ? "recovery" : "";
+    centerHtml = '<div class="center-area"><div class="timer-label">' + (isRest ? "REST" : "TIME") + '</div><div class="timer ' + tcls + '" id="timer-num">' + fmt(state.timeLeft) + '</div><button class="pause-btn" id="pause-btn">❚❚  PAUSE</button></div>';
+  } else {
+    centerHtml = '<div class="center-area"><div class="timer-label">REPS</div><div class="timer">' + b.reps + '</div></div>';
+  }
+
+  const btnClass = isRest ? "rest" : b.phase === "warmup" ? "warmup" : b.phase === "metcon" ? "metcon" : b.phase === "recovery" ? "recovery" : "";
+  const btnText = b.type === "reps" ? "DONE → NEXT" : "NEXT →";
+  const pairPill = b.pair ? '<span class="meta-pill pair">' + b.pair + '</span>' : "";
+  const cue = b.cue || "";
+
+  app.innerHTML = '<div class="pips">' + pipsHtml + '</div>' +
+    '<div class="topbar">' +
+      '<button class="back" id="back-btn">← Back</button>' +
+      '<div class="phase ' + colorClass + '">' + phaseLabels[b.phase] + '</div>' +
+      '<button class="back" id="exit-btn" style="text-align:right;">Exit</button>' +
+    '</div>' +
+    roundBannerHtml +
+    '<div class="card">' +
+      '<div class="glow ' + colorClass + '"></div>' +
+      '<div class="card-content">' +
+        '<div>' +
+          '<div class="ex-num">' + (state.index + 1) + ' / ' + total + '</div>' +
+          '<div class="ex-name">' + b.name.toUpperCase() + '</div>' +
+          '<div class="ex-meta"><span class="meta-pill accent">' + b.detail + '</span>' + pairPill + '</div>' +
+          pairHtml +
+          (cue ? '<div class="ex-cue">' + cue + '</div>' : '') +
+        '</div>' +
+        centerHtml +
+        '<div class="bottom">' +
+          '<button class="next-btn ' + btnClass + '" id="next-btn">' + btnText + '</button>' +
+          (b.type === "timed" ? '<button class="skip-btn" id="skip-btn">SKIP</button>' : "") +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="drawer-handle" id="drawer-handle"><div class="handle-bar"></div><div class="handle-text">↑ PROGRAM OVERVIEW</div></div>';
+
+  attachRunningHandlers();
+}
+
+function attachRunningHandlers() {
+  const nextBtn = document.getElementById("next-btn");
+  if (nextBtn) {
+    nextBtn.addEventListener("touchend", function(e){ e.preventDefault(); next(); });
+    nextBtn.addEventListener("click", next);
+  }
+  const skip = document.getElementById("skip-btn");
+  if (skip) {
+    skip.addEventListener("touchend", function(e){ e.preventDefault(); next(); });
+    skip.addEventListener("click", next);
+  }
+  const backBtn = document.getElementById("back-btn");
+  if (backBtn) {
+    backBtn.addEventListener("touchend", function(e){ e.preventDefault(); back(); });
+    backBtn.addEventListener("click", back);
+  }
+  const exitBtn = document.getElementById("exit-btn");
+  if (exitBtn) {
+    exitBtn.addEventListener("touchend", function(e){ e.preventDefault(); exitToDetail(); });
+    exitBtn.addEventListener("click", exitToDetail);
+  }
+  const pauseBtn = document.getElementById("pause-btn");
+  if (pauseBtn) {
+    pauseBtn.addEventListener("touchend", function(e){ e.preventDefault(); togglePause(); });
+    pauseBtn.addEventListener("click", togglePause);
+  }
+  const handle = document.getElementById("drawer-handle");
+  if (handle) {
+    handle.addEventListener("touchend", function(e){ e.preventDefault(); openDrawer(); });
+    handle.addEventListener("click", openDrawer);
+  }
+  setupSwipeUp();
+}
+
+// ============================================================
+// OVERVIEW DRAWER
+// ============================================================
+function openDrawer() {
+  state.drawerOpen = true;
+  drawerBackdrop.classList.add("open");
+  drawer.classList.add("open");
+  renderDrawerContent();
+}
+
+function closeDrawer() {
+  state.drawerOpen = false;
+  drawerBackdrop.classList.remove("open");
+  drawer.classList.remove("open");
+}
+
+function renderDrawerContent() {
+  const w = getWorkout();
+  if (!w) return;
+
+  document.getElementById("drawer-title").textContent = w.name;
+  const completed = state.index;
+  const remaining = w.blocks.length - state.index - 1;
+  document.getElementById("drawer-sub").textContent = "STEP " + (state.index + 1) + " / " + w.blocks.length + " • " + remaining + " LEFT";
+
+  // Group blocks by blockLabel for the overview
+  const groups = [];
+  let currentGroup = null;
+  w.blocks.forEach((b, idx) => {
+    const label = b.blockLabel || "OTHER";
+    if (!currentGroup || currentGroup.label !== label) {
+      currentGroup = { label: label, cls: b.phase === "rest" ? (currentGroup ? currentGroup.cls : "warmup") : b.phase, blocks: [] };
+      groups.push(currentGroup);
+    }
+    currentGroup.blocks.push({ block: b, idx: idx });
+  });
+
+  // For each group, build a list. Skip the rest blocks within groups when showing the user (cleaner overview), but we'll keep them tracked for status.
+  let html = "";
+  for (const g of groups) {
+    // Detect if this is the currently active group
+    const isCurrentGroup = g.blocks.some(item => item.idx === state.index);
+
+    // Pull rounds info from first block in group that has roundTotal
+    const blockWithRound = g.blocks.find(x => x.block.roundTotal);
+    let roundsLabel = "";
+    if (blockWithRound) {
+      // Find max roundCurrent reached or current
+      const currentRound = isCurrentGroup
+        ? (g.blocks.find(x => x.idx === state.index)?.block?.roundCurrent || 1)
+        : (g.blocks[g.blocks.length - 1].block.roundCurrent || 1);
+      const total = blockWithRound.block.roundTotal;
+      roundsLabel = isCurrentGroup
+        ? "ROUND " + currentRound + " / " + total
+        : (state.index > g.blocks[g.blocks.length - 1].idx ? "DONE" : total + " ROUNDS");
+    }
+
+    // Filter to only non-rest blocks for the visible list (rest is implied)
+    const visibleBlocks = g.blocks.filter(x => x.block.phase !== "rest");
+
+    // Build dedupe-on-name list to avoid showing "Goblet Squat" 3 times — show unique exercises
+    const seen = {};
+    const uniqueBlocks = [];
+    for (const item of visibleBlocks) {
+      const key = item.block.name;
+      if (!seen[key]) { seen[key] = true; uniqueBlocks.push(item); }
+    }
+
+    let rowsHtml = "";
+    for (const item of uniqueBlocks) {
+      // Find the latest matching index in the group with this name to determine status
+      const matchingIndices = g.blocks.filter(x => x.block.name === item.block.name).map(x => x.idx);
+      const isCurrent = matchingIndices.includes(state.index);
+      const isAllDone = matchingIndices.every(i => i < state.index);
+      const cls = isCurrent ? "current-ex" : isAllDone ? "done-ex" : "";
+      const tag = item.block.pair ? '<span class="pair-tag">' + item.block.pair + '</span>' : "";
+      rowsHtml += '<div class="ov-row ' + cls + '"><div class="ov-row-name"><span class="ov-marker"></span>' + tag + item.block.name + '</div><div class="ov-row-detail">' + (item.block.detail || "") + '</div></div>';
+    }
+
+    const blockClass = "ov-block " + g.cls + (isCurrentGroup ? " current" : "");
+    html += '<div class="' + blockClass + '"><div class="ov-head"><div class="ov-label">' + g.label + '</div><div class="ov-rounds">' + roundsLabel + '</div></div><div class="ov-list">' + rowsHtml + '</div></div>';
+  }
+
+  document.getElementById("drawer-list").innerHTML = html;
+}
+
+// Backdrop tap closes drawer
+drawerBackdrop.addEventListener("touchend", function(e){ e.preventDefault(); closeDrawer(); });
+drawerBackdrop.addEventListener("click", closeDrawer);
+
+// Drawer top (grab) tap closes drawer
+drawer.querySelector(".drawer-top").addEventListener("touchend", function(e){ e.preventDefault(); closeDrawer(); });
+drawer.querySelector(".drawer-top").addEventListener("click", closeDrawer);
+
+// Swipe up gesture on the bottom handle area
+function setupSwipeUp() {
+  const handle = document.getElementById("drawer-handle");
+  if (!handle) return;
+  let startY = null;
+  handle.addEventListener("touchstart", function(e) {
+    if (e.touches.length === 1) startY = e.touches[0].clientY;
+  }, { passive: true });
+  handle.addEventListener("touchmove", function(e) {
+    if (startY === null) return;
+    const diff = startY - e.touches[0].clientY;
+    if (diff > 30) { openDrawer(); startY = null; }
+  }, { passive: true });
+}
+
+// Swipe down on drawer to close
+let drawerStartY = null;
+drawer.addEventListener("touchstart", function(e) {
+  if (e.touches.length === 1) drawerStartY = e.touches[0].clientY;
+}, { passive: true });
+drawer.addEventListener("touchmove", function(e) {
+  if (drawerStartY === null) return;
+  const diff = e.touches[0].clientY - drawerStartY;
+  if (diff > 60) { closeDrawer(); drawerStartY = null; }
+}, { passive: true });
+
+// ============================================================
+// DONE SCREEN
+// ============================================================
+function finishWorkout() {
+  state.screen = "done";
+  clearInterval(state.timerId);
+  closeDrawer();
+  vibrate([200, 100, 200]);
+  const elapsed = Math.round((Date.now() - state.startTime) / 60000);
+  const w = getWorkout();
+  app.innerHTML = '<div class="done">' +
+    '<div class="done-icon">✓</div>' +
+    '<div class="done-title">DONE</div>' +
+    '<div class="done-sub">You crushed it. ' + (w ? w.name : "Workout") + ' complete in ' + elapsed + ' minutes. Hydrate, get protein in within an hour, and stretch.</div>' +
+    '<button class="done-btn" id="restart">BACK TO LIBRARY</button></div>';
+  const r = document.getElementById("restart");
+  r.addEventListener("touchend", function(e){ e.preventDefault(); renderLibrary(); });
+  r.addEventListener("click", renderLibrary);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+renderLibrary();
+</script>
+
+</body>
+</html>
