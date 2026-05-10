@@ -159,6 +159,10 @@
 .alt-desc { font-size: 13px; font-weight: 500; line-height: 1.5; color: rgba(255,255,255,0.8); }
 
 /* Timer area (only for timed blocks) */
+.next-up-card { background: rgba(0,230,118,0.08); border: 1px solid rgba(0,230,118,0.3); border-left: 3px solid #00e676; border-radius: 12px; padding: 14px 16px; margin: 4px 0 14px; }
+.next-up-label { font-family: ‘Archivo Black’, sans-serif; font-size: 10px; letter-spacing: 0.28em; color: #00e676; margin-bottom: 6px; text-transform: uppercase; }
+.next-up-name { font-family: ‘Bebas Neue’, sans-serif; font-size: 32px; line-height: 1; letter-spacing: 0.02em; -webkit-text-stroke: 0.4px #fff; margin-bottom: 10px; color: #fff; }
+.next-up-meta { display: flex; gap: 8px; flex-wrap: wrap; }
 .timer-area { display: flex; flex-direction: column; align-items: center; padding: 16px 0 8px; gap: 10px; }
 .timer { font-family: ‘Bebas Neue’, sans-serif; font-size: 130px; line-height: 1; letter-spacing: 0.01em; color: #fff; font-variant-numeric: tabular-nums; -webkit-text-stroke: 1px #fff; }
 .timer.rest { color: #40c4ff; -webkit-text-stroke: 1px #40c4ff; }
@@ -5998,8 +6002,10 @@ function loadBlock() {
   const w = getWorkout();
   const b = w.blocks[state.index];
   if (!b) { finishWorkout(); return; }
-  state.paused = true;
-  state.started = false;
+  // Rest blocks auto-start (no manual tap needed). Active timed blocks (warmup, planks, conditioning) wait for tap.
+  const isRestBlock = b.phase === "rest";
+  state.paused = !isRestBlock;
+  state.started = isRestBlock;
   if (b.type === "timed") {
     state.timeLeft = b.duration;
     renderRunning();
@@ -6125,6 +6131,22 @@ function renderRunning() {
   const isRest = b.phase === "rest";
   const colorClass = b.phase;
 
+  // ===== Find next active (non-rest) block for "next up" preview =====
+  let nextUp = null;
+  if (isRest) {
+    for (let i = state.index + 1; i < w.blocks.length; i++) {
+      if (w.blocks[i].phase !== "rest") { nextUp = w.blocks[i]; break; }
+    }
+  }
+  const nextUpHtml = nextUp ? (
+    '<div class="next-up-card"><div class="next-up-label">↓ NEXT UP</div>' +
+    '<div class="next-up-name">' + nextUp.name.toUpperCase() + '</div>' +
+    '<div class="next-up-meta">' +
+    (nextUp.pair ? '<span class="meta-pill pair">' + nextUp.pair + '</span>' : '') +
+    '<span class="meta-pill accent">' + nextUp.detail + '</span>' +
+    '</div></div>'
+  ) : "";
+
   // ===== Persistent jump bar =====
   const roundText = b.roundTotal ? "R" + b.roundCurrent + "/" + b.roundTotal : "";
   const jumpHtml = '<div class="jump-bar ' + colorClass + '" id="jump-bar">' +
@@ -6171,10 +6193,13 @@ function renderRunning() {
   let displayHtml = "";
   if (b.type === "timed") {
     const tcls = colorClass;
+    const timerCls = isRest ? tcls : "paused " + tcls;  // rest = running (no paused class); active = paused awaiting tap
+    const btnText = isRest ? "❚❚  PAUSE" : "▶  START";
+    const btnCls = isRest ? "pause-btn" : "pause-btn ready";
     displayHtml = '<div class="timer-area">' +
       '<div class="timer-label">' + (isRest ? "REST" : "TIME") + '</div>' +
-      '<div class="timer paused ' + tcls + '" id="timer-num">' + fmt(state.timeLeft) + '</div>' +
-      '<div class="timer-controls"><button class="pause-btn ready" id="pause-btn">▶  START</button></div>' +
+      '<div class="timer ' + timerCls + '" id="timer-num">' + fmt(state.timeLeft) + '</div>' +
+      '<div class="timer-controls"><button class="' + btnCls + '" id="pause-btn">' + btnText + '</button></div>' +
       '</div>';
   } else if (b.type === "reps") {
     displayHtml = '<div class="reps-display">' +
@@ -6204,6 +6229,7 @@ function renderRunning() {
       pairHtml +
       insHtml +
       altsHtml +
+      nextUpHtml +
       displayHtml +
     '</div>' +
     '<div class="scroll-hint" id="scroll-hint">↓ SCROLL FOR MORE</div>' +
