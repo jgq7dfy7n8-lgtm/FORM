@@ -2768,1008 +2768,1103 @@ const workouts = [
       }
     ],
     "blocks": [
-      {
-        "phase": "warmup",
-        "type": "timed",
-        "name": "Treadmill / Bike",
-        "duration": 180,
-        "blockLabel": "WARM UP",
-        "roundCurrent": 1,
-        "roundTotal": 5,
-        "detail": "3 min",
-        "instructions": {
-                  "setup": "Two heavy DBs at shoulder level. Stand tall, feet shoulder width.",
-                  "execution": [
-                            "DBs at shoulder height, palms forward",
-                            "Quick dip — bend knees just a few inches",
-                            "Drive up explosively through the legs",
-                            "As legs extend, press DBs overhead — leg drive helps the weight up",
-                            "Lock out arms overhead, DBs slightly forward of head",
-                            "Lower under control back to shoulders"
-                  ],
-                  "target": "8 reps. Heavy. Use the leg drive to handle more weight than a strict press.",
-                  "mistakes": [
-                            "No leg drive (turns into a strict press)",
-                            "Pressing the bar forward instead of straight up",
-                            "Diving forward at the knees (it's a vertical dip, not a squat)"
-                  ]
-        },
-        "type": "reps",
-        "reps": "6-8"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Rest",
-        "duration": 30,
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 1,
-        "roundTotal": 4,
-        "detail": "30 sec",
-        "cue": "Switch to Wide Grip Pulldown."
-      },
-      {
-        "phase": "strength",
-        "name": "Wide Grip Pulldown",
-        "alternatives": [{"name":"Pull-Ups","desc":"If you have a bar — same target muscles, just bodyweight. Aim for same rep range. Add a band for assistance if needed."},{"name":"Single-Arm Lat Pulldown","desc":"One arm at a time, D-handle. Better for fixing imbalances. 8-10 each side."},{"name":"Banded Pulldown","desc":"If no machine — anchor a heavy band overhead, pull down to chest. Same range of motion."}],
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 1,
-        "roundTotal": 4,
-        "pair": "A2",
-        "pairWith": "Incline DB Press",
-        "detail": "8 reps",
-        "instructions": {
-          "setup": "Pulldown bar with wide grip (1.5x shoulder width). Thighs locked under pad. Lean back ~10-15°.",
-          "execution": [
-            "Start with arms fully extended overhead, slight lat stretch",
-            "Pull bar down to upper chest by driving elbows DOWN and back",
-            "Squeeze lats hard at the bottom",
-            "Slow return, control the stretch"
-          ],
-          "target": "8 hard reps. Lats, not biceps.",
-          "mistakes": [
-            "Pulling with biceps",
-            "Leaning back too far",
-            "Pulling bar to lap or chin"
-          ]
-        },
-        "type": "reps",
-        "reps": "8"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Round Rest",
-        "duration": 90,
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 1,
-        "roundTotal": 4,
-        "detail": "90 sec",
-        "cue": "Recover. Round 2 of 4 up next."
-      },
-      {
-        "phase": "strength",
-        "name": "Incline DB Press",
+  {
+    "phase": "warmup",
+    "type": "timed",
+    "name": "Treadmill / Bike",
+    "duration": 180,
+    "blockLabel": "WARM UP",
+    "roundCurrent": 1,
+    "roundTotal": 5,
+    "detail": "3 min",
+    "instructions": {
+      "setup": "Treadmill 5° incline, 3.5 mph or moderate bike.",
+      "execution": [
+        "Get the heart rate up, body warm"
+      ],
+      "target": "Light sweat."
+    }
+  },
+  {
+    "phase": "warmup",
+    "type": "timed",
+    "name": "Arm Circles",
+    "duration": 60,
+    "blockLabel": "WARM UP",
+    "roundCurrent": 2,
+    "roundTotal": 5,
+    "detail": "1 min",
+    "instructions": {
+      "setup": "Arms straight out at shoulder height.",
+      "execution": [
+        "30 sec forward, 30 sec backward",
+        "Build from small to large"
+      ]
+    }
+  },
+  {
+    "phase": "warmup",
+    "type": "timed",
+    "name": "Band Pull-Aparts",
+    "duration": 60,
+    "blockLabel": "WARM UP",
+    "roundCurrent": 3,
+    "roundTotal": 5,
+    "detail": "1 min",
+    "instructions": {
+      "setup": "Light band held at shoulder height, arms straight.",
+      "execution": [
+        "Pull apart by squeezing shoulder blades",
+        "Pause at full stretch",
+        "Slow return"
+      ],
+      "target": "20-25 reps. Wakes up upper back and rear delts."
+    }
+  },
+  {
+    "phase": "warmup",
+    "type": "timed",
+    "name": "Shoulder CARs",
+    "duration": 60,
+    "blockLabel": "WARM UP",
+    "roundCurrent": 4,
+    "roundTotal": 5,
+    "detail": "1 min",
+    "instructions": {
+      "setup": "Stand tall, one arm at a time.",
+      "execution": [
+        "Make biggest possible circle with arm",
+        "Slow and controlled",
+        "30 sec each direction per arm"
+      ]
+    }
+  },
+  {
+    "phase": "warmup",
+    "type": "timed",
+    "name": "Light Press × 12",
+    "duration": 60,
+    "blockLabel": "WARM UP",
+    "roundCurrent": 5,
+    "roundTotal": 5,
+    "detail": "1 min",
+    "instructions": {
+      "setup": "Light DBs (~30% of working weight).",
+      "execution": [
+        "Practice the press groove",
+        "Full range, slow tempo"
+      ],
+      "target": "12 easy reps."
+    }
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Set Up Pair A",
+    "duration": 60,
+    "blockLabel": "WARM UP → PAIR A",
+    "detail": "60 sec",
+    "cue": "Set up incline bench (30-45°). Heavy DBs for incline press. Pulldown station ready."
+  },
+  {
+    "phase": "strength",
+    "name": "Incline DB Press",
         "alternatives": [{"name":"Incline Barbell Bench Press","desc":"Bench at 30-45°. Same rep range. Great alternative if all DBs are heavy or in use."},{"name":"Incline Push-Ups (feet elevated)","desc":"Feet on a bench, hands on floor — flips the angle. Add a plate on the back if too easy. Same time under tension."},{"name":"Incline Machine Press","desc":"Set the seat low so the press angle hits the upper chest. Same rep range."}],
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 2,
-        "roundTotal": 4,
-        "pair": "A1",
-        "pairWith": "Wide Grip Pulldown",
-        "detail": "6-8 reps",
-        "instructions": {
-          "setup": "Bench at 30-45° (lower angle = more upper chest). Heavy DBs.",
-          "execution": [
-            "DBs at upper chest level, palms forward",
-            "Press up and slightly together",
-            "Don't lock elbows at the top",
-            "Lower with control (3-sec) for deep stretch",
-            "Drive up powerfully"
-          ],
-          "target": "6-8 heavy reps. The 6th should grind.",
-          "mistakes": [
-            "Bench too steep (turns into shoulder press)",
-            "Bouncing",
-            "Half range"
-          ]
-        },
-        "type": "reps",
-        "reps": "6-8"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Rest",
-        "duration": 30,
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 2,
-        "roundTotal": 4,
-        "detail": "30 sec",
-        "cue": "Switch to Wide Grip Pulldown."
-      },
-      {
-        "phase": "strength",
-        "name": "Wide Grip Pulldown",
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 1,
+    "roundTotal": 4,
+    "pair": "A1",
+    "pairWith": "Wide Grip Pulldown",
+    "detail": "6-8 reps",
+    "instructions": {
+      "setup": "Bench at 30-45° (lower angle = more upper chest). Heavy DBs.",
+      "execution": [
+        "DBs at upper chest level, palms forward",
+        "Press up and slightly together",
+        "Don't lock elbows at the top",
+        "Lower with control (3-sec) for deep stretch",
+        "Drive up powerfully"
+      ],
+      "target": "6-8 heavy reps. The 6th should grind.",
+      "mistakes": [
+        "Bench too steep (turns into shoulder press)",
+        "Bouncing",
+        "Half range"
+      ]
+    },
+    "type": "reps",
+    "reps": "6-8"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Rest",
+    "duration": 30,
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 1,
+    "roundTotal": 4,
+    "detail": "30 sec",
+    "cue": "Switch to Wide Grip Pulldown."
+  },
+  {
+    "phase": "strength",
+    "name": "Wide Grip Pulldown",
         "alternatives": [{"name":"Pull-Ups","desc":"If you have a bar — same target muscles, just bodyweight. Aim for same rep range. Add a band for assistance if needed."},{"name":"Single-Arm Lat Pulldown","desc":"One arm at a time, D-handle. Better for fixing imbalances. 8-10 each side."},{"name":"Banded Pulldown","desc":"If no machine — anchor a heavy band overhead, pull down to chest. Same range of motion."}],
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 2,
-        "roundTotal": 4,
-        "pair": "A2",
-        "pairWith": "Incline DB Press",
-        "detail": "8 reps",
-        "instructions": {
-          "setup": "Pulldown bar with wide grip (1.5x shoulder width). Thighs locked under pad. Lean back ~10-15°.",
-          "execution": [
-            "Start with arms fully extended overhead, slight lat stretch",
-            "Pull bar down to upper chest by driving elbows DOWN and back",
-            "Squeeze lats hard at the bottom",
-            "Slow return, control the stretch"
-          ],
-          "target": "8 hard reps. Lats, not biceps.",
-          "mistakes": [
-            "Pulling with biceps",
-            "Leaning back too far",
-            "Pulling bar to lap or chin"
-          ]
-        },
-        "type": "reps",
-        "reps": "8"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Round Rest",
-        "duration": 90,
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 2,
-        "roundTotal": 4,
-        "detail": "90 sec",
-        "cue": "Recover. Round 3 of 4 up next."
-      },
-      {
-        "phase": "strength",
-        "name": "Incline DB Press",
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 1,
+    "roundTotal": 4,
+    "pair": "A2",
+    "pairWith": "Incline DB Press",
+    "detail": "8 reps",
+    "instructions": {
+      "setup": "Pulldown bar with wide grip (1.5x shoulder width). Thighs locked under pad. Lean back ~10-15°.",
+      "execution": [
+        "Start with arms fully extended overhead, slight lat stretch",
+        "Pull bar down to upper chest by driving elbows DOWN and back",
+        "Squeeze lats hard at the bottom",
+        "Slow return, control the stretch"
+      ],
+      "target": "8 hard reps. Lats, not biceps.",
+      "mistakes": [
+        "Pulling with biceps",
+        "Leaning back too far",
+        "Pulling bar to lap or chin"
+      ]
+    },
+    "type": "reps",
+    "reps": "8"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Round Rest",
+    "duration": 90,
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 1,
+    "roundTotal": 4,
+    "detail": "90 sec",
+    "cue": "Recover. Round 2 of 4 up next."
+  },
+  {
+    "phase": "strength",
+    "name": "Incline DB Press",
         "alternatives": [{"name":"Incline Barbell Bench Press","desc":"Bench at 30-45°. Same rep range. Great alternative if all DBs are heavy or in use."},{"name":"Incline Push-Ups (feet elevated)","desc":"Feet on a bench, hands on floor — flips the angle. Add a plate on the back if too easy. Same time under tension."},{"name":"Incline Machine Press","desc":"Set the seat low so the press angle hits the upper chest. Same rep range."}],
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 3,
-        "roundTotal": 4,
-        "pair": "A1",
-        "pairWith": "Wide Grip Pulldown",
-        "detail": "6-8 reps",
-        "instructions": {
-          "setup": "Bench at 30-45° (lower angle = more upper chest). Heavy DBs.",
-          "execution": [
-            "DBs at upper chest level, palms forward",
-            "Press up and slightly together",
-            "Don't lock elbows at the top",
-            "Lower with control (3-sec) for deep stretch",
-            "Drive up powerfully"
-          ],
-          "target": "6-8 heavy reps. The 6th should grind.",
-          "mistakes": [
-            "Bench too steep (turns into shoulder press)",
-            "Bouncing",
-            "Half range"
-          ]
-        },
-        "type": "reps",
-        "reps": "6-8"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Rest",
-        "duration": 30,
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 3,
-        "roundTotal": 4,
-        "detail": "30 sec",
-        "cue": "Switch to Wide Grip Pulldown."
-      },
-      {
-        "phase": "strength",
-        "name": "Wide Grip Pulldown",
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 2,
+    "roundTotal": 4,
+    "pair": "A1",
+    "pairWith": "Wide Grip Pulldown",
+    "detail": "6-8 reps",
+    "instructions": {
+      "setup": "Bench at 30-45° (lower angle = more upper chest). Heavy DBs.",
+      "execution": [
+        "DBs at upper chest level, palms forward",
+        "Press up and slightly together",
+        "Don't lock elbows at the top",
+        "Lower with control (3-sec) for deep stretch",
+        "Drive up powerfully"
+      ],
+      "target": "6-8 heavy reps. The 6th should grind.",
+      "mistakes": [
+        "Bench too steep (turns into shoulder press)",
+        "Bouncing",
+        "Half range"
+      ]
+    },
+    "type": "reps",
+    "reps": "6-8"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Rest",
+    "duration": 30,
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 2,
+    "roundTotal": 4,
+    "detail": "30 sec",
+    "cue": "Switch to Wide Grip Pulldown."
+  },
+  {
+    "phase": "strength",
+    "name": "Wide Grip Pulldown",
         "alternatives": [{"name":"Pull-Ups","desc":"If you have a bar — same target muscles, just bodyweight. Aim for same rep range. Add a band for assistance if needed."},{"name":"Single-Arm Lat Pulldown","desc":"One arm at a time, D-handle. Better for fixing imbalances. 8-10 each side."},{"name":"Banded Pulldown","desc":"If no machine — anchor a heavy band overhead, pull down to chest. Same range of motion."}],
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 3,
-        "roundTotal": 4,
-        "pair": "A2",
-        "pairWith": "Incline DB Press",
-        "detail": "8 reps",
-        "instructions": {
-          "setup": "Pulldown bar with wide grip (1.5x shoulder width). Thighs locked under pad. Lean back ~10-15°.",
-          "execution": [
-            "Start with arms fully extended overhead, slight lat stretch",
-            "Pull bar down to upper chest by driving elbows DOWN and back",
-            "Squeeze lats hard at the bottom",
-            "Slow return, control the stretch"
-          ],
-          "target": "8 hard reps. Lats, not biceps.",
-          "mistakes": [
-            "Pulling with biceps",
-            "Leaning back too far",
-            "Pulling bar to lap or chin"
-          ]
-        },
-        "type": "reps",
-        "reps": "8"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Round Rest",
-        "duration": 90,
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 3,
-        "roundTotal": 4,
-        "detail": "90 sec",
-        "cue": "Recover. Round 4 of 4 up next."
-      },
-      {
-        "phase": "strength",
-        "name": "Incline DB Press",
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 2,
+    "roundTotal": 4,
+    "pair": "A2",
+    "pairWith": "Incline DB Press",
+    "detail": "8 reps",
+    "instructions": {
+      "setup": "Pulldown bar with wide grip (1.5x shoulder width). Thighs locked under pad. Lean back ~10-15°.",
+      "execution": [
+        "Start with arms fully extended overhead, slight lat stretch",
+        "Pull bar down to upper chest by driving elbows DOWN and back",
+        "Squeeze lats hard at the bottom",
+        "Slow return, control the stretch"
+      ],
+      "target": "8 hard reps. Lats, not biceps.",
+      "mistakes": [
+        "Pulling with biceps",
+        "Leaning back too far",
+        "Pulling bar to lap or chin"
+      ]
+    },
+    "type": "reps",
+    "reps": "8"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Round Rest",
+    "duration": 90,
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 2,
+    "roundTotal": 4,
+    "detail": "90 sec",
+    "cue": "Recover. Round 3 of 4 up next."
+  },
+  {
+    "phase": "strength",
+    "name": "Incline DB Press",
         "alternatives": [{"name":"Incline Barbell Bench Press","desc":"Bench at 30-45°. Same rep range. Great alternative if all DBs are heavy or in use."},{"name":"Incline Push-Ups (feet elevated)","desc":"Feet on a bench, hands on floor — flips the angle. Add a plate on the back if too easy. Same time under tension."},{"name":"Incline Machine Press","desc":"Set the seat low so the press angle hits the upper chest. Same rep range."}],
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 4,
-        "roundTotal": 4,
-        "pair": "A1",
-        "pairWith": "Wide Grip Pulldown",
-        "detail": "6-8 reps",
-        "instructions": {
-          "setup": "Bench at 30-45° (lower angle = more upper chest). Heavy DBs.",
-          "execution": [
-            "DBs at upper chest level, palms forward",
-            "Press up and slightly together",
-            "Don't lock elbows at the top",
-            "Lower with control (3-sec) for deep stretch",
-            "Drive up powerfully"
-          ],
-          "target": "6-8 heavy reps. The 6th should grind.",
-          "mistakes": [
-            "Bench too steep (turns into shoulder press)",
-            "Bouncing",
-            "Half range"
-          ]
-        },
-        "type": "reps",
-        "reps": "6-8"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Rest",
-        "duration": 30,
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 4,
-        "roundTotal": 4,
-        "detail": "30 sec",
-        "cue": "Switch to Wide Grip Pulldown."
-      },
-      {
-        "phase": "strength",
-        "name": "Wide Grip Pulldown",
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 3,
+    "roundTotal": 4,
+    "pair": "A1",
+    "pairWith": "Wide Grip Pulldown",
+    "detail": "6-8 reps",
+    "instructions": {
+      "setup": "Bench at 30-45° (lower angle = more upper chest). Heavy DBs.",
+      "execution": [
+        "DBs at upper chest level, palms forward",
+        "Press up and slightly together",
+        "Don't lock elbows at the top",
+        "Lower with control (3-sec) for deep stretch",
+        "Drive up powerfully"
+      ],
+      "target": "6-8 heavy reps. The 6th should grind.",
+      "mistakes": [
+        "Bench too steep (turns into shoulder press)",
+        "Bouncing",
+        "Half range"
+      ]
+    },
+    "type": "reps",
+    "reps": "6-8"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Rest",
+    "duration": 30,
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 3,
+    "roundTotal": 4,
+    "detail": "30 sec",
+    "cue": "Switch to Wide Grip Pulldown."
+  },
+  {
+    "phase": "strength",
+    "name": "Wide Grip Pulldown",
         "alternatives": [{"name":"Pull-Ups","desc":"If you have a bar — same target muscles, just bodyweight. Aim for same rep range. Add a band for assistance if needed."},{"name":"Single-Arm Lat Pulldown","desc":"One arm at a time, D-handle. Better for fixing imbalances. 8-10 each side."},{"name":"Banded Pulldown","desc":"If no machine — anchor a heavy band overhead, pull down to chest. Same range of motion."}],
-        "blockLabel": "STRENGTH PAIR A",
-        "roundCurrent": 4,
-        "roundTotal": 4,
-        "pair": "A2",
-        "pairWith": "Incline DB Press",
-        "detail": "8 reps",
-        "instructions": {
-          "setup": "Pulldown bar with wide grip (1.5x shoulder width). Thighs locked under pad. Lean back ~10-15°.",
-          "execution": [
-            "Start with arms fully extended overhead, slight lat stretch",
-            "Pull bar down to upper chest by driving elbows DOWN and back",
-            "Squeeze lats hard at the bottom",
-            "Slow return, control the stretch"
-          ],
-          "target": "8 hard reps. Lats, not biceps.",
-          "mistakes": [
-            "Pulling with biceps",
-            "Leaning back too far",
-            "Pulling bar to lap or chin"
-          ]
-        },
-        "type": "reps",
-        "reps": "8"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Transition",
-        "duration": 90,
-        "blockLabel": "PAIR A → PAIR B",
-        "detail": "90 sec",
-        "cue": "Flat bench for press. Set up chest-supported row angle."
-      },
-      {
-        "phase": "strength",
-        "name": "DB Push Press",
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 3,
+    "roundTotal": 4,
+    "pair": "A2",
+    "pairWith": "Incline DB Press",
+    "detail": "8 reps",
+    "instructions": {
+      "setup": "Pulldown bar with wide grip (1.5x shoulder width). Thighs locked under pad. Lean back ~10-15°.",
+      "execution": [
+        "Start with arms fully extended overhead, slight lat stretch",
+        "Pull bar down to upper chest by driving elbows DOWN and back",
+        "Squeeze lats hard at the bottom",
+        "Slow return, control the stretch"
+      ],
+      "target": "8 hard reps. Lats, not biceps.",
+      "mistakes": [
+        "Pulling with biceps",
+        "Leaning back too far",
+        "Pulling bar to lap or chin"
+      ]
+    },
+    "type": "reps",
+    "reps": "8"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Round Rest",
+    "duration": 90,
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 3,
+    "roundTotal": 4,
+    "detail": "90 sec",
+    "cue": "Recover. Round 4 of 4 up next."
+  },
+  {
+    "phase": "strength",
+    "name": "Incline DB Press",
+        "alternatives": [{"name":"Incline Barbell Bench Press","desc":"Bench at 30-45°. Same rep range. Great alternative if all DBs are heavy or in use."},{"name":"Incline Push-Ups (feet elevated)","desc":"Feet on a bench, hands on floor — flips the angle. Add a plate on the back if too easy. Same time under tension."},{"name":"Incline Machine Press","desc":"Set the seat low so the press angle hits the upper chest. Same rep range."}],
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 4,
+    "roundTotal": 4,
+    "pair": "A1",
+    "pairWith": "Wide Grip Pulldown",
+    "detail": "6-8 reps",
+    "instructions": {
+      "setup": "Bench at 30-45° (lower angle = more upper chest). Heavy DBs.",
+      "execution": [
+        "DBs at upper chest level, palms forward",
+        "Press up and slightly together",
+        "Don't lock elbows at the top",
+        "Lower with control (3-sec) for deep stretch",
+        "Drive up powerfully"
+      ],
+      "target": "6-8 heavy reps. The 6th should grind.",
+      "mistakes": [
+        "Bench too steep (turns into shoulder press)",
+        "Bouncing",
+        "Half range"
+      ]
+    },
+    "type": "reps",
+    "reps": "6-8"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Rest",
+    "duration": 30,
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 4,
+    "roundTotal": 4,
+    "detail": "30 sec",
+    "cue": "Switch to Wide Grip Pulldown."
+  },
+  {
+    "phase": "strength",
+    "name": "Wide Grip Pulldown",
+        "alternatives": [{"name":"Pull-Ups","desc":"If you have a bar — same target muscles, just bodyweight. Aim for same rep range. Add a band for assistance if needed."},{"name":"Single-Arm Lat Pulldown","desc":"One arm at a time, D-handle. Better for fixing imbalances. 8-10 each side."},{"name":"Banded Pulldown","desc":"If no machine — anchor a heavy band overhead, pull down to chest. Same range of motion."}],
+    "blockLabel": "STRENGTH PAIR A",
+    "roundCurrent": 4,
+    "roundTotal": 4,
+    "pair": "A2",
+    "pairWith": "Incline DB Press",
+    "detail": "8 reps",
+    "instructions": {
+      "setup": "Pulldown bar with wide grip (1.5x shoulder width). Thighs locked under pad. Lean back ~10-15°.",
+      "execution": [
+        "Start with arms fully extended overhead, slight lat stretch",
+        "Pull bar down to upper chest by driving elbows DOWN and back",
+        "Squeeze lats hard at the bottom",
+        "Slow return, control the stretch"
+      ],
+      "target": "8 hard reps. Lats, not biceps.",
+      "mistakes": [
+        "Pulling with biceps",
+        "Leaning back too far",
+        "Pulling bar to lap or chin"
+      ]
+    },
+    "type": "reps",
+    "reps": "8"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Transition",
+    "duration": 90,
+    "blockLabel": "PAIR A → PAIR B",
+    "detail": "90 sec",
+    "cue": "Grab moderate-heavy DBs for push press. Set up chest-supported row angle."
+  },
+  {
+    "phase": "strength",
+    "name": "DB Push Press",
         "alternatives": [{"name":"Barbell Push Press","desc":"Same movement with a barbell. Drive with the legs, lock out overhead. Heavier loadable."},{"name":"Strict Seated DB Press","desc":"Skip the leg drive, slow the tempo. Pure shoulder work. Same rep range, lighter weight."},{"name":"Push-Ups (weighted)","desc":"If no DBs available — push-ups with a plate on your back. Same time-under-tension target."}],
-        "blockLabel": "STRENGTH PAIR B",
-        "roundCurrent": 1,
-        "roundTotal": 3,
-        "pair": "B1",
-        "pairWith": "Chest-Supported DB Row",
-        "detail": "8 reps",
-        "instructions": {
-                  "setup": "Two heavy DBs at shoulder level. Stand tall, feet shoulder width.",
-                  "execution": [
-                            "DBs at shoulder height, palms forward",
-                            "Quick dip — bend knees just a few inches",
-                            "Drive up explosively through the legs",
-                            "As legs extend, press DBs overhead — leg drive helps the weight up",
-                            "Lock out arms overhead, DBs slightly forward of head",
-                            "Lower under control back to shoulders"
-                  ],
-                  "target": "8 reps. Heavy. Use the leg drive to handle more weight than a strict press.",
-                  "mistakes": [
-                            "No leg drive (turns into a strict press)",
-                            "Pressing the bar forward instead of straight up",
-                            "Diving forward at the knees (it's a vertical dip, not a squat)"
-                  ]
-        },
-        "type": "reps",
-        "reps": "8"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Rest",
-        "duration": 30,
-        "blockLabel": "STRENGTH PAIR B",
-        "roundCurrent": 1,
-        "roundTotal": 3,
-        "detail": "30 sec",
-        "cue": "Switch to Chest-Supported DB Row."
-      },
-      {
-        "phase": "strength",
-        "name": "Chest-Supported DB Row",
+    "blockLabel": "STRENGTH PAIR B",
+    "roundCurrent": 1,
+    "roundTotal": 3,
+    "pair": "B1",
+    "pairWith": "Chest-Supported DB Row",
+    "detail": "8 reps",
+    "instructions": {
+      "setup": "Two heavy DBs at shoulder level. Stand tall, feet shoulder width.",
+      "execution": [
+        "DBs at shoulder height, palms forward",
+        "Quick dip — bend knees just a few inches",
+        "Drive up explosively through the legs",
+        "As legs extend, press DBs overhead — leg drive helps the weight up",
+        "Lock out arms overhead, DBs slightly forward of head",
+        "Lower under control back to shoulders"
+      ],
+      "target": "8 reps. Heavy. Use the leg drive to handle more weight than a strict press.",
+      "mistakes": [
+        "No leg drive (turns into a strict press)",
+        "Pressing the bar forward instead of straight up",
+        "Diving forward at the knees (it's a vertical dip, not a squat)"
+      ]
+    },
+    "type": "reps",
+    "reps": "8"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Rest",
+    "duration": 30,
+    "blockLabel": "STRENGTH PAIR B",
+    "roundCurrent": 1,
+    "roundTotal": 3,
+    "detail": "30 sec",
+    "cue": "Switch to Chest-Supported DB Row."
+  },
+  {
+    "phase": "strength",
+    "name": "Chest-Supported DB Row",
         "alternatives": [{"name":"T-Bar Row","desc":"Landmine attachment or T-bar machine. Chest supported via a pad or just a wide stance. Same rep range."},{"name":"Seated Cable Row","desc":"V-handle. Pull to belly, squeeze shoulder blades. Same rep range."},{"name":"Pendlay Row","desc":"Barbell on the floor, hinge over, explosive row to chest, reset on floor each rep. Strict form."}],
-        "blockLabel": "STRENGTH PAIR B",
-        "roundCurrent": 1,
-        "roundTotal": 3,
-        "pair": "B2",
-        "pairWith": "DB Push Press",
-        "detail": "8-10 reps",
-        "instructions": {
-          "setup": "Bench at 30-45°. Lay face-down, chest pressed into pad. Heavy DBs.",
-          "execution": [
-            "Arms extended, palms facing each other",
-            "Pull DBs up to your sides, drive elbows back",
-            "Squeeze shoulder blades hard",
-            "Slow lower with full stretch"
-          ],
-          "target": "8-10 strict reps.",
-          "mistakes": [
-            "Lifting chest off pad",
-            "Pulling with biceps",
-            "Short range"
-          ]
-        },
-        "type": "reps",
-        "reps": "8-10"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Round Rest",
-        "duration": 90,
-        "blockLabel": "STRENGTH PAIR B",
-        "roundCurrent": 1,
-        "roundTotal": 3,
-        "detail": "90 sec",
-        "cue": "Recover. Round 2 of 3 up next."
-      },
-      {
-        "phase": "strength",
-        "name": "DB Push Press",
+    "blockLabel": "STRENGTH PAIR B",
+    "roundCurrent": 1,
+    "roundTotal": 3,
+    "pair": "B2",
+    "pairWith": "DB Push Press",
+    "detail": "8-10 reps",
+    "instructions": {
+      "setup": "Bench at 30-45°. Lay face-down, chest pressed into pad. Heavy DBs.",
+      "execution": [
+        "Arms extended, palms facing each other",
+        "Pull DBs up to your sides, drive elbows back",
+        "Squeeze shoulder blades hard",
+        "Slow lower with full stretch"
+      ],
+      "target": "8-10 strict reps.",
+      "mistakes": [
+        "Lifting chest off pad",
+        "Pulling with biceps",
+        "Short range"
+      ]
+    },
+    "type": "reps",
+    "reps": "8-10"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Round Rest",
+    "duration": 90,
+    "blockLabel": "STRENGTH PAIR B",
+    "roundCurrent": 1,
+    "roundTotal": 3,
+    "detail": "90 sec",
+    "cue": "Recover. Round 2 of 3 up next."
+  },
+  {
+    "phase": "strength",
+    "name": "DB Push Press",
         "alternatives": [{"name":"Barbell Push Press","desc":"Same movement with a barbell. Drive with the legs, lock out overhead. Heavier loadable."},{"name":"Strict Seated DB Press","desc":"Skip the leg drive, slow the tempo. Pure shoulder work. Same rep range, lighter weight."},{"name":"Push-Ups (weighted)","desc":"If no DBs available — push-ups with a plate on your back. Same time-under-tension target."}],
-        "blockLabel": "STRENGTH PAIR B",
-        "roundCurrent": 2,
-        "roundTotal": 3,
-        "pair": "B1",
-        "pairWith": "Chest-Supported DB Row",
-        "detail": "8 reps",
-        "instructions": {
-                  "setup": "Two heavy DBs at shoulder level. Stand tall, feet shoulder width.",
-                  "execution": [
-                            "DBs at shoulder height, palms forward",
-                            "Quick dip — bend knees just a few inches",
-                            "Drive up explosively through the legs",
-                            "As legs extend, press DBs overhead — leg drive helps the weight up",
-                            "Lock out arms overhead, DBs slightly forward of head",
-                            "Lower under control back to shoulders"
-                  ],
-                  "target": "8 reps. Heavy. Use the leg drive to handle more weight than a strict press.",
-                  "mistakes": [
-                            "No leg drive (turns into a strict press)",
-                            "Pressing the bar forward instead of straight up",
-                            "Diving forward at the knees (it's a vertical dip, not a squat)"
-                  ]
-        },
-        "type": "reps",
-        "reps": "8"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Rest",
-        "duration": 30,
-        "blockLabel": "STRENGTH PAIR B",
-        "roundCurrent": 2,
-        "roundTotal": 3,
-        "detail": "30 sec",
-        "cue": "Switch to Chest-Supported DB Row."
-      },
-      {
-        "phase": "strength",
-        "name": "Chest-Supported DB Row",
+    "blockLabel": "STRENGTH PAIR B",
+    "roundCurrent": 2,
+    "roundTotal": 3,
+    "pair": "B1",
+    "pairWith": "Chest-Supported DB Row",
+    "detail": "8 reps",
+    "instructions": {
+      "setup": "Two heavy DBs at shoulder level. Stand tall, feet shoulder width.",
+      "execution": [
+        "DBs at shoulder height, palms forward",
+        "Quick dip — bend knees just a few inches",
+        "Drive up explosively through the legs",
+        "As legs extend, press DBs overhead — leg drive helps the weight up",
+        "Lock out arms overhead, DBs slightly forward of head",
+        "Lower under control back to shoulders"
+      ],
+      "target": "8 reps. Heavy. Use the leg drive to handle more weight than a strict press.",
+      "mistakes": [
+        "No leg drive (turns into a strict press)",
+        "Pressing the bar forward instead of straight up",
+        "Diving forward at the knees (it's a vertical dip, not a squat)"
+      ]
+    },
+    "type": "reps",
+    "reps": "8"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Rest",
+    "duration": 30,
+    "blockLabel": "STRENGTH PAIR B",
+    "roundCurrent": 2,
+    "roundTotal": 3,
+    "detail": "30 sec",
+    "cue": "Switch to Chest-Supported DB Row."
+  },
+  {
+    "phase": "strength",
+    "name": "Chest-Supported DB Row",
         "alternatives": [{"name":"T-Bar Row","desc":"Landmine attachment or T-bar machine. Chest supported via a pad or just a wide stance. Same rep range."},{"name":"Seated Cable Row","desc":"V-handle. Pull to belly, squeeze shoulder blades. Same rep range."},{"name":"Pendlay Row","desc":"Barbell on the floor, hinge over, explosive row to chest, reset on floor each rep. Strict form."}],
-        "blockLabel": "STRENGTH PAIR B",
-        "roundCurrent": 2,
-        "roundTotal": 3,
-        "pair": "B2",
-        "pairWith": "DB Push Press",
-        "detail": "8-10 reps",
-        "instructions": {
-          "setup": "Bench at 30-45°. Lay face-down, chest pressed into pad. Heavy DBs.",
-          "execution": [
-            "Arms extended, palms facing each other",
-            "Pull DBs up to your sides, drive elbows back",
-            "Squeeze shoulder blades hard",
-            "Slow lower with full stretch"
-          ],
-          "target": "8-10 strict reps.",
-          "mistakes": [
-            "Lifting chest off pad",
-            "Pulling with biceps",
-            "Short range"
-          ]
-        },
-        "type": "reps",
-        "reps": "8-10"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Round Rest",
-        "duration": 90,
-        "blockLabel": "STRENGTH PAIR B",
-        "roundCurrent": 2,
-        "roundTotal": 3,
-        "detail": "90 sec",
-        "cue": "Recover. Round 3 of 3 up next."
-      },
-      {
-        "phase": "strength",
-        "name": "DB Push Press",
+    "blockLabel": "STRENGTH PAIR B",
+    "roundCurrent": 2,
+    "roundTotal": 3,
+    "pair": "B2",
+    "pairWith": "DB Push Press",
+    "detail": "8-10 reps",
+    "instructions": {
+      "setup": "Bench at 30-45°. Lay face-down, chest pressed into pad. Heavy DBs.",
+      "execution": [
+        "Arms extended, palms facing each other",
+        "Pull DBs up to your sides, drive elbows back",
+        "Squeeze shoulder blades hard",
+        "Slow lower with full stretch"
+      ],
+      "target": "8-10 strict reps.",
+      "mistakes": [
+        "Lifting chest off pad",
+        "Pulling with biceps",
+        "Short range"
+      ]
+    },
+    "type": "reps",
+    "reps": "8-10"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Round Rest",
+    "duration": 90,
+    "blockLabel": "STRENGTH PAIR B",
+    "roundCurrent": 2,
+    "roundTotal": 3,
+    "detail": "90 sec",
+    "cue": "Recover. Round 3 of 3 up next."
+  },
+  {
+    "phase": "strength",
+    "name": "DB Push Press",
         "alternatives": [{"name":"Barbell Push Press","desc":"Same movement with a barbell. Drive with the legs, lock out overhead. Heavier loadable."},{"name":"Strict Seated DB Press","desc":"Skip the leg drive, slow the tempo. Pure shoulder work. Same rep range, lighter weight."},{"name":"Push-Ups (weighted)","desc":"If no DBs available — push-ups with a plate on your back. Same time-under-tension target."}],
-        "blockLabel": "STRENGTH PAIR B",
-        "roundCurrent": 3,
-        "roundTotal": 3,
-        "pair": "B1",
-        "pairWith": "Chest-Supported DB Row",
-        "detail": "8 reps",
-        "instructions": {
-                  "setup": "Two heavy DBs at shoulder level. Stand tall, feet shoulder width.",
-                  "execution": [
-                            "DBs at shoulder height, palms forward",
-                            "Quick dip — bend knees just a few inches",
-                            "Drive up explosively through the legs",
-                            "As legs extend, press DBs overhead — leg drive helps the weight up",
-                            "Lock out arms overhead, DBs slightly forward of head",
-                            "Lower under control back to shoulders"
-                  ],
-                  "target": "8 reps. Heavy. Use the leg drive to handle more weight than a strict press.",
-                  "mistakes": [
-                            "No leg drive (turns into a strict press)",
-                            "Pressing the bar forward instead of straight up",
-                            "Diving forward at the knees (it's a vertical dip, not a squat)"
-                  ]
-        },
-        "type": "reps",
-        "reps": "8"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Rest",
-        "duration": 30,
-        "blockLabel": "STRENGTH PAIR B",
-        "roundCurrent": 3,
-        "roundTotal": 3,
-        "detail": "30 sec",
-        "cue": "Switch to Chest-Supported DB Row."
-      },
-      {
-        "phase": "strength",
-        "name": "Chest-Supported DB Row",
+    "blockLabel": "STRENGTH PAIR B",
+    "roundCurrent": 3,
+    "roundTotal": 3,
+    "pair": "B1",
+    "pairWith": "Chest-Supported DB Row",
+    "detail": "8 reps",
+    "instructions": {
+      "setup": "Two heavy DBs at shoulder level. Stand tall, feet shoulder width.",
+      "execution": [
+        "DBs at shoulder height, palms forward",
+        "Quick dip — bend knees just a few inches",
+        "Drive up explosively through the legs",
+        "As legs extend, press DBs overhead — leg drive helps the weight up",
+        "Lock out arms overhead, DBs slightly forward of head",
+        "Lower under control back to shoulders"
+      ],
+      "target": "8 reps. Heavy. Use the leg drive to handle more weight than a strict press.",
+      "mistakes": [
+        "No leg drive (turns into a strict press)",
+        "Pressing the bar forward instead of straight up",
+        "Diving forward at the knees (it's a vertical dip, not a squat)"
+      ]
+    },
+    "type": "reps",
+    "reps": "8"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Rest",
+    "duration": 30,
+    "blockLabel": "STRENGTH PAIR B",
+    "roundCurrent": 3,
+    "roundTotal": 3,
+    "detail": "30 sec",
+    "cue": "Switch to Chest-Supported DB Row."
+  },
+  {
+    "phase": "strength",
+    "name": "Chest-Supported DB Row",
         "alternatives": [{"name":"T-Bar Row","desc":"Landmine attachment or T-bar machine. Chest supported via a pad or just a wide stance. Same rep range."},{"name":"Seated Cable Row","desc":"V-handle. Pull to belly, squeeze shoulder blades. Same rep range."},{"name":"Pendlay Row","desc":"Barbell on the floor, hinge over, explosive row to chest, reset on floor each rep. Strict form."}],
-        "blockLabel": "STRENGTH PAIR B",
-        "roundCurrent": 3,
-        "roundTotal": 3,
-        "pair": "B2",
-        "pairWith": "DB Push Press",
-        "detail": "8-10 reps",
-        "instructions": {
-          "setup": "Bench at 30-45°. Lay face-down, chest pressed into pad. Heavy DBs.",
-          "execution": [
-            "Arms extended, palms facing each other",
-            "Pull DBs up to your sides, drive elbows back",
-            "Squeeze shoulder blades hard",
-            "Slow lower with full stretch"
-          ],
-          "target": "8-10 strict reps.",
-          "mistakes": [
-            "Lifting chest off pad",
-            "Pulling with biceps",
-            "Short range"
-          ]
-        },
-        "type": "reps",
-        "reps": "8-10"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Transition",
-        "duration": 60,
-        "blockLabel": "PAIR B → PAIR C",
-        "detail": "60 sec",
-        "cue": "Light DBs for laterals. Moderate DBs for hammer curls."
-      },
-      {
-        "phase": "metcon",
-        "name": "DB Lateral Raise",
+    "blockLabel": "STRENGTH PAIR B",
+    "roundCurrent": 3,
+    "roundTotal": 3,
+    "pair": "B2",
+    "pairWith": "DB Push Press",
+    "detail": "8-10 reps",
+    "instructions": {
+      "setup": "Bench at 30-45°. Lay face-down, chest pressed into pad. Heavy DBs.",
+      "execution": [
+        "Arms extended, palms facing each other",
+        "Pull DBs up to your sides, drive elbows back",
+        "Squeeze shoulder blades hard",
+        "Slow lower with full stretch"
+      ],
+      "target": "8-10 strict reps.",
+      "mistakes": [
+        "Lifting chest off pad",
+        "Pulling with biceps",
+        "Short range"
+      ]
+    },
+    "type": "reps",
+    "reps": "8-10"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Transition",
+    "duration": 60,
+    "blockLabel": "PAIR B → PAIR C",
+    "detail": "60 sec",
+    "cue": "Light DBs for laterals. Moderate DBs for hammer curls."
+  },
+  {
+    "phase": "metcon",
+    "name": "DB Lateral Raise",
         "alternatives": [{"name":"Cable Lateral Raise","desc":"One arm at a time, cable at the low pulley. More tension at the top. Same rep range — lighter weight."},{"name":"Machine Lateral Raise","desc":"Most gyms have one. Locked path of motion, easier to keep strict form. Same rep range."},{"name":"Plate Front-to-Lateral Raise","desc":"If only one plate is available — raise it to shoulder height in front and out to the side. Burns the delts hard."}],
-        "blockLabel": "ACCESSORY PAIR C",
-        "roundCurrent": 1,
-        "roundTotal": 3,
-        "pair": "C1",
-        "pairWith": "DB Hammer Curl",
-        "detail": "12-15 reps",
-        "instructions": {
-          "setup": "Light DBs (much lighter than press). Stand or seated.",
-          "execution": [
-            "Slight bend in elbows, locked into that bend",
-            "Lead with elbows — raise DBs out until elbows reach shoulder height",
-            "Pinky slightly higher than thumb (like pouring a pitcher)",
-            "Lower SLOWLY — 3 sec",
-            "No swinging or momentum"
-          ],
-          "target": "12-15 strict reps. Lateral delt burn.",
-          "mistakes": [
-            "Going too heavy and using traps",
-            "Raising arms higher than shoulders",
-            "Leading with wrists"
-          ]
-        },
-        "type": "reps",
-        "reps": "12-15"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Rest",
-        "duration": 25,
-        "blockLabel": "ACCESSORY PAIR C",
-        "roundCurrent": 1,
-        "roundTotal": 3,
-        "detail": "25 sec",
-        "cue": "Switch to DB Hammer Curl."
-      },
-      {
-        "phase": "metcon",
-        "name": "DB Hammer Curl",
+    "blockLabel": "ACCESSORY PAIR C",
+    "roundCurrent": 1,
+    "roundTotal": 3,
+    "pair": "C1",
+    "pairWith": "DB Hammer Curl",
+    "detail": "12-15 reps",
+    "instructions": {
+      "setup": "Light DBs (much lighter than press). Stand or seated.",
+      "execution": [
+        "Slight bend in elbows, locked into that bend",
+        "Lead with elbows — raise DBs out until elbows reach shoulder height",
+        "Pinky slightly higher than thumb (like pouring a pitcher)",
+        "Lower SLOWLY — 3 sec",
+        "No swinging or momentum"
+      ],
+      "target": "12-15 strict reps. Lateral delt burn.",
+      "mistakes": [
+        "Going too heavy and using traps",
+        "Raising arms higher than shoulders",
+        "Leading with wrists"
+      ]
+    },
+    "type": "reps",
+    "reps": "12-15"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Rest",
+    "duration": 25,
+    "blockLabel": "ACCESSORY PAIR C",
+    "roundCurrent": 1,
+    "roundTotal": 3,
+    "detail": "25 sec",
+    "cue": "Switch to DB Hammer Curl."
+  },
+  {
+    "phase": "metcon",
+    "name": "DB Hammer Curl",
         "alternatives": [{"name":"Cable Rope Hammer Curl","desc":"Rope at low pulley, palms facing each other. Same rep range. Better for the squeeze at the top."},{"name":"Cross-Body Hammer Curl","desc":"Same DB, but curl across your body toward the opposite shoulder. Hits the brachialis even more."},{"name":"Reverse Curl","desc":"Pronated grip (palms down). EZ-bar or DBs. Same rep range. Heavier hit on forearms."}],
-        "blockLabel": "ACCESSORY PAIR C",
-        "roundCurrent": 1,
-        "roundTotal": 3,
-        "pair": "C2",
-        "pairWith": "DB Lateral Raise",
-        "detail": "10-12 reps",
-        "instructions": {
-          "setup": "Two moderate DBs, neutral grip (palms facing each other).",
-          "execution": [
-            "Elbows pinned to sides",
-            "Curl up keeping palms facing each other",
-            "Squeeze at the top",
-            "Slow lower"
-          ],
-          "target": "10-12 strict reps. Hits brachialis and forearms.",
-          "mistakes": [
-            "Wrist rotation",
-            "Body swing",
-            "Elbows drifting"
-          ]
-        },
-        "type": "reps",
-        "reps": "10-12"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Round Rest",
-        "duration": 60,
-        "blockLabel": "ACCESSORY PAIR C",
-        "roundCurrent": 1,
-        "roundTotal": 3,
-        "detail": "60 sec",
-        "cue": "Recover. Round 2 of 3 up next."
-      },
-      {
-        "phase": "metcon",
-        "name": "DB Lateral Raise",
+    "blockLabel": "ACCESSORY PAIR C",
+    "roundCurrent": 1,
+    "roundTotal": 3,
+    "pair": "C2",
+    "pairWith": "DB Lateral Raise",
+    "detail": "10-12 reps",
+    "instructions": {
+      "setup": "Two moderate DBs, neutral grip (palms facing each other).",
+      "execution": [
+        "Elbows pinned to sides",
+        "Curl up keeping palms facing each other",
+        "Squeeze at the top",
+        "Slow lower"
+      ],
+      "target": "10-12 strict reps. Hits brachialis and forearms.",
+      "mistakes": [
+        "Wrist rotation",
+        "Body swing",
+        "Elbows drifting"
+      ]
+    },
+    "type": "reps",
+    "reps": "10-12"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Round Rest",
+    "duration": 60,
+    "blockLabel": "ACCESSORY PAIR C",
+    "roundCurrent": 1,
+    "roundTotal": 3,
+    "detail": "60 sec",
+    "cue": "Recover. Round 2 of 3 up next."
+  },
+  {
+    "phase": "metcon",
+    "name": "DB Lateral Raise",
         "alternatives": [{"name":"Cable Lateral Raise","desc":"One arm at a time, cable at the low pulley. More tension at the top. Same rep range — lighter weight."},{"name":"Machine Lateral Raise","desc":"Most gyms have one. Locked path of motion, easier to keep strict form. Same rep range."},{"name":"Plate Front-to-Lateral Raise","desc":"If only one plate is available — raise it to shoulder height in front and out to the side. Burns the delts hard."}],
-        "blockLabel": "ACCESSORY PAIR C",
-        "roundCurrent": 2,
-        "roundTotal": 3,
-        "pair": "C1",
-        "pairWith": "DB Hammer Curl",
-        "detail": "12-15 reps",
-        "instructions": {
-          "setup": "Light DBs (much lighter than press). Stand or seated.",
-          "execution": [
-            "Slight bend in elbows, locked into that bend",
-            "Lead with elbows — raise DBs out until elbows reach shoulder height",
-            "Pinky slightly higher than thumb (like pouring a pitcher)",
-            "Lower SLOWLY — 3 sec",
-            "No swinging or momentum"
-          ],
-          "target": "12-15 strict reps. Lateral delt burn.",
-          "mistakes": [
-            "Going too heavy and using traps",
-            "Raising arms higher than shoulders",
-            "Leading with wrists"
-          ]
-        },
-        "type": "reps",
-        "reps": "12-15"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Rest",
-        "duration": 25,
-        "blockLabel": "ACCESSORY PAIR C",
-        "roundCurrent": 2,
-        "roundTotal": 3,
-        "detail": "25 sec",
-        "cue": "Switch to DB Hammer Curl."
-      },
-      {
-        "phase": "metcon",
-        "name": "DB Hammer Curl",
+    "blockLabel": "ACCESSORY PAIR C",
+    "roundCurrent": 2,
+    "roundTotal": 3,
+    "pair": "C1",
+    "pairWith": "DB Hammer Curl",
+    "detail": "12-15 reps",
+    "instructions": {
+      "setup": "Light DBs (much lighter than press). Stand or seated.",
+      "execution": [
+        "Slight bend in elbows, locked into that bend",
+        "Lead with elbows — raise DBs out until elbows reach shoulder height",
+        "Pinky slightly higher than thumb (like pouring a pitcher)",
+        "Lower SLOWLY — 3 sec",
+        "No swinging or momentum"
+      ],
+      "target": "12-15 strict reps. Lateral delt burn.",
+      "mistakes": [
+        "Going too heavy and using traps",
+        "Raising arms higher than shoulders",
+        "Leading with wrists"
+      ]
+    },
+    "type": "reps",
+    "reps": "12-15"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Rest",
+    "duration": 25,
+    "blockLabel": "ACCESSORY PAIR C",
+    "roundCurrent": 2,
+    "roundTotal": 3,
+    "detail": "25 sec",
+    "cue": "Switch to DB Hammer Curl."
+  },
+  {
+    "phase": "metcon",
+    "name": "DB Hammer Curl",
         "alternatives": [{"name":"Cable Rope Hammer Curl","desc":"Rope at low pulley, palms facing each other. Same rep range. Better for the squeeze at the top."},{"name":"Cross-Body Hammer Curl","desc":"Same DB, but curl across your body toward the opposite shoulder. Hits the brachialis even more."},{"name":"Reverse Curl","desc":"Pronated grip (palms down). EZ-bar or DBs. Same rep range. Heavier hit on forearms."}],
-        "blockLabel": "ACCESSORY PAIR C",
-        "roundCurrent": 2,
-        "roundTotal": 3,
-        "pair": "C2",
-        "pairWith": "DB Lateral Raise",
-        "detail": "10-12 reps",
-        "instructions": {
-          "setup": "Two moderate DBs, neutral grip (palms facing each other).",
-          "execution": [
-            "Elbows pinned to sides",
-            "Curl up keeping palms facing each other",
-            "Squeeze at the top",
-            "Slow lower"
-          ],
-          "target": "10-12 strict reps. Hits brachialis and forearms.",
-          "mistakes": [
-            "Wrist rotation",
-            "Body swing",
-            "Elbows drifting"
-          ]
-        },
-        "type": "reps",
-        "reps": "10-12"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Round Rest",
-        "duration": 60,
-        "blockLabel": "ACCESSORY PAIR C",
-        "roundCurrent": 2,
-        "roundTotal": 3,
-        "detail": "60 sec",
-        "cue": "Recover. Round 3 of 3 up next."
-      },
-      {
-        "phase": "metcon",
-        "name": "DB Lateral Raise",
+    "blockLabel": "ACCESSORY PAIR C",
+    "roundCurrent": 2,
+    "roundTotal": 3,
+    "pair": "C2",
+    "pairWith": "DB Lateral Raise",
+    "detail": "10-12 reps",
+    "instructions": {
+      "setup": "Two moderate DBs, neutral grip (palms facing each other).",
+      "execution": [
+        "Elbows pinned to sides",
+        "Curl up keeping palms facing each other",
+        "Squeeze at the top",
+        "Slow lower"
+      ],
+      "target": "10-12 strict reps. Hits brachialis and forearms.",
+      "mistakes": [
+        "Wrist rotation",
+        "Body swing",
+        "Elbows drifting"
+      ]
+    },
+    "type": "reps",
+    "reps": "10-12"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Round Rest",
+    "duration": 60,
+    "blockLabel": "ACCESSORY PAIR C",
+    "roundCurrent": 2,
+    "roundTotal": 3,
+    "detail": "60 sec",
+    "cue": "Recover. Round 3 of 3 up next."
+  },
+  {
+    "phase": "metcon",
+    "name": "DB Lateral Raise",
         "alternatives": [{"name":"Cable Lateral Raise","desc":"One arm at a time, cable at the low pulley. More tension at the top. Same rep range — lighter weight."},{"name":"Machine Lateral Raise","desc":"Most gyms have one. Locked path of motion, easier to keep strict form. Same rep range."},{"name":"Plate Front-to-Lateral Raise","desc":"If only one plate is available — raise it to shoulder height in front and out to the side. Burns the delts hard."}],
-        "blockLabel": "ACCESSORY PAIR C",
-        "roundCurrent": 3,
-        "roundTotal": 3,
-        "pair": "C1",
-        "pairWith": "DB Hammer Curl",
-        "detail": "12-15 reps",
-        "instructions": {
-          "setup": "Light DBs (much lighter than press). Stand or seated.",
-          "execution": [
-            "Slight bend in elbows, locked into that bend",
-            "Lead with elbows — raise DBs out until elbows reach shoulder height",
-            "Pinky slightly higher than thumb (like pouring a pitcher)",
-            "Lower SLOWLY — 3 sec",
-            "No swinging or momentum"
-          ],
-          "target": "12-15 strict reps. Lateral delt burn.",
-          "mistakes": [
-            "Going too heavy and using traps",
-            "Raising arms higher than shoulders",
-            "Leading with wrists"
-          ]
-        },
-        "type": "reps",
-        "reps": "12-15"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Rest",
-        "duration": 25,
-        "blockLabel": "ACCESSORY PAIR C",
-        "roundCurrent": 3,
-        "roundTotal": 3,
-        "detail": "25 sec",
-        "cue": "Switch to DB Hammer Curl."
-      },
-      {
-        "phase": "metcon",
-        "name": "DB Hammer Curl",
+    "blockLabel": "ACCESSORY PAIR C",
+    "roundCurrent": 3,
+    "roundTotal": 3,
+    "pair": "C1",
+    "pairWith": "DB Hammer Curl",
+    "detail": "12-15 reps",
+    "instructions": {
+      "setup": "Light DBs (much lighter than press). Stand or seated.",
+      "execution": [
+        "Slight bend in elbows, locked into that bend",
+        "Lead with elbows — raise DBs out until elbows reach shoulder height",
+        "Pinky slightly higher than thumb (like pouring a pitcher)",
+        "Lower SLOWLY — 3 sec",
+        "No swinging or momentum"
+      ],
+      "target": "12-15 strict reps. Lateral delt burn.",
+      "mistakes": [
+        "Going too heavy and using traps",
+        "Raising arms higher than shoulders",
+        "Leading with wrists"
+      ]
+    },
+    "type": "reps",
+    "reps": "12-15"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Rest",
+    "duration": 25,
+    "blockLabel": "ACCESSORY PAIR C",
+    "roundCurrent": 3,
+    "roundTotal": 3,
+    "detail": "25 sec",
+    "cue": "Switch to DB Hammer Curl."
+  },
+  {
+    "phase": "metcon",
+    "name": "DB Hammer Curl",
         "alternatives": [{"name":"Cable Rope Hammer Curl","desc":"Rope at low pulley, palms facing each other. Same rep range. Better for the squeeze at the top."},{"name":"Cross-Body Hammer Curl","desc":"Same DB, but curl across your body toward the opposite shoulder. Hits the brachialis even more."},{"name":"Reverse Curl","desc":"Pronated grip (palms down). EZ-bar or DBs. Same rep range. Heavier hit on forearms."}],
-        "blockLabel": "ACCESSORY PAIR C",
-        "roundCurrent": 3,
-        "roundTotal": 3,
-        "pair": "C2",
-        "pairWith": "DB Lateral Raise",
-        "detail": "10-12 reps",
-        "instructions": {
-          "setup": "Two moderate DBs, neutral grip (palms facing each other).",
-          "execution": [
-            "Elbows pinned to sides",
-            "Curl up keeping palms facing each other",
-            "Squeeze at the top",
-            "Slow lower"
-          ],
-          "target": "10-12 strict reps. Hits brachialis and forearms.",
-          "mistakes": [
-            "Wrist rotation",
-            "Body swing",
-            "Elbows drifting"
-          ]
-        },
-        "type": "reps",
-        "reps": "10-12"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Transition",
-        "duration": 45,
-        "blockLabel": "PAIR C → PAIR D",
-        "detail": "45 sec",
-        "cue": "One DB overhead. DB for twists."
-      },
-      {
-        "phase": "metcon",
-        "name": "Overhead DB Tricep Ext",
+    "blockLabel": "ACCESSORY PAIR C",
+    "roundCurrent": 3,
+    "roundTotal": 3,
+    "pair": "C2",
+    "pairWith": "DB Lateral Raise",
+    "detail": "10-12 reps",
+    "instructions": {
+      "setup": "Two moderate DBs, neutral grip (palms facing each other).",
+      "execution": [
+        "Elbows pinned to sides",
+        "Curl up keeping palms facing each other",
+        "Squeeze at the top",
+        "Slow lower"
+      ],
+      "target": "10-12 strict reps. Hits brachialis and forearms.",
+      "mistakes": [
+        "Wrist rotation",
+        "Body swing",
+        "Elbows drifting"
+      ]
+    },
+    "type": "reps",
+    "reps": "10-12"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Transition",
+    "duration": 45,
+    "blockLabel": "PAIR C → PAIR D",
+    "detail": "45 sec",
+    "cue": "One DB overhead. DB for twists."
+  },
+  {
+    "phase": "metcon",
+    "name": "Overhead DB Tricep Ext",
         "alternatives": [{"name":"Cable Overhead Tricep Extension","desc":"Rope at low pulley, face away from machine, press overhead and extend. Constant tension on the long head."},{"name":"Single-Arm DB Overhead Extension","desc":"If only one moderate DB available — do one arm at a time. Same rep range each side."},{"name":"Bench Dips","desc":"Hands on bench behind you, feet out. Lower hips, press up. Add a plate on lap for resistance. Hits triceps + some chest."}],
-        "blockLabel": "ACCESSORY PAIR D",
-        "roundCurrent": 1,
-        "roundTotal": 3,
-        "pair": "D1",
-        "pairWith": "DB Russian Twists",
-        "detail": "10-12 reps",
-        "instructions": {
-          "setup": "Stand or sit. Hold one moderate DB with both hands cupped under top end. DB held overhead.",
-          "execution": [
-            "Elbows up by ears, pointed straight up",
-            "Lower DB behind head by bending only the elbows",
-            "Get a deep stretch in the triceps",
-            "Extend back overhead using triceps",
-            "Squeeze at top"
-          ],
-          "target": "10-12 reps with full stretch.",
-          "mistakes": [
-            "Elbows flaring out wide",
-            "Letting elbows drift forward",
-            "Half range"
-          ]
-        },
-        "type": "reps",
-        "reps": "10-12"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Rest",
-        "duration": 25,
-        "blockLabel": "ACCESSORY PAIR D",
-        "roundCurrent": 1,
-        "roundTotal": 3,
-        "detail": "25 sec",
-        "cue": "Switch to DB Russian Twists."
-      },
-      {
-        "phase": "metcon",
-        "name": "DB Russian Twists",
-        "alternatives": [{"name":"Plate Russian Twists","desc":"Same movement with a plate instead of DB. Same rep target."},{"name":"Cable Wood-Chop","desc":"Cable high to low (or low to high), rotate from the trunk. 12/side. Constant tension."},{"name":"Bicycle Crunches",
-        "alternatives": [{"name":"Lying Leg Raises","desc":"Lay flat, raise legs to 90°, lower slowly without touching floor. 12-15 reps."},{"name":"Cable Crunches","desc":"Kneel facing cable, rope behind head, crunch down with abs. Heavier weight option. 15 reps."},{"name":"V-Ups","desc":"Lay flat, simultaneously bring legs and torso up to meet, fingers to toes. 12 reps."}],"desc":"If no weight — bodyweight bicycle crunches. Slow rotation through the trunk. 30 seconds."}],
-        "blockLabel": "ACCESSORY PAIR D",
-        "roundCurrent": 1,
-        "roundTotal": 3,
-        "pair": "D2",
-        "pairWith": "Overhead DB Tricep Ext",
-        "detail": "20 total",
-        "instructions": {
-          "setup": "Sit on floor, knees bent, feet up. Lean back ~45°. One DB at chest.",
-          "execution": [
-            "Twist to right, DB to right hip",
-            "Twist left, DB to left hip",
-            "10/side = 20 total",
-            "Move from the trunk"
-          ],
-          "target": "20 controlled reps."
-        },
-        "type": "reps",
-        "reps": "20 total"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Round Rest",
-        "duration": 30,
-        "blockLabel": "ACCESSORY PAIR D",
-        "roundCurrent": 1,
-        "roundTotal": 3,
-        "detail": "30 sec",
-        "cue": "Recover. Round 2 of 3 up next."
-      },
-      {
-        "phase": "metcon",
-        "name": "Overhead DB Tricep Ext",
+    "blockLabel": "ACCESSORY PAIR D",
+    "roundCurrent": 1,
+    "roundTotal": 3,
+    "pair": "D1",
+    "pairWith": "DB Russian Twists",
+    "detail": "10-12 reps",
+    "instructions": {
+      "setup": "Stand or sit. Hold one moderate DB with both hands cupped under top end. DB held overhead.",
+      "execution": [
+        "Elbows up by ears, pointed straight up",
+        "Lower DB behind head by bending only the elbows",
+        "Get a deep stretch in the triceps",
+        "Extend back overhead using triceps",
+        "Squeeze at top"
+      ],
+      "target": "10-12 reps with full stretch.",
+      "mistakes": [
+        "Elbows flaring out wide",
+        "Letting elbows drift forward",
+        "Half range"
+      ]
+    },
+    "type": "reps",
+    "reps": "10-12"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Rest",
+    "duration": 25,
+    "blockLabel": "ACCESSORY PAIR D",
+    "roundCurrent": 1,
+    "roundTotal": 3,
+    "detail": "25 sec",
+    "cue": "Switch to DB Russian Twists."
+  },
+  {
+    "phase": "metcon",
+    "name": "DB Russian Twists",
+        "alternatives": [{"name":"Plate Russian Twists","desc":"Same movement with a plate instead of DB. Same rep target."},{"name":"Cable Wood-Chop","desc":"Cable high to low (or low to high), rotate from the trunk. 12/side. Constant tension."},{"name":"Bicycle Crunches","desc":"If no weight — bodyweight bicycle crunches. Slow rotation through the trunk. 30 seconds."}],
+    "blockLabel": "ACCESSORY PAIR D",
+    "roundCurrent": 1,
+    "roundTotal": 3,
+    "pair": "D2",
+    "pairWith": "Overhead DB Tricep Ext",
+    "detail": "20 total",
+    "instructions": {
+      "setup": "Sit on floor, knees bent, feet up. Lean back ~45°. One DB at chest.",
+      "execution": [
+        "Twist to right, DB to right hip",
+        "Twist left, DB to left hip",
+        "10/side = 20 total",
+        "Move from the trunk"
+      ],
+      "target": "20 controlled reps."
+    },
+    "type": "reps",
+    "reps": "20 total"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Round Rest",
+    "duration": 30,
+    "blockLabel": "ACCESSORY PAIR D",
+    "roundCurrent": 1,
+    "roundTotal": 3,
+    "detail": "30 sec",
+    "cue": "Recover. Round 2 of 3 up next."
+  },
+  {
+    "phase": "metcon",
+    "name": "Overhead DB Tricep Ext",
         "alternatives": [{"name":"Cable Overhead Tricep Extension","desc":"Rope at low pulley, face away from machine, press overhead and extend. Constant tension on the long head."},{"name":"Single-Arm DB Overhead Extension","desc":"If only one moderate DB available — do one arm at a time. Same rep range each side."},{"name":"Bench Dips","desc":"Hands on bench behind you, feet out. Lower hips, press up. Add a plate on lap for resistance. Hits triceps + some chest."}],
-        "blockLabel": "ACCESSORY PAIR D",
-        "roundCurrent": 2,
-        "roundTotal": 3,
-        "pair": "D1",
-        "pairWith": "DB Russian Twists",
-        "detail": "10-12 reps",
-        "instructions": {
-          "setup": "Stand or sit. Hold one moderate DB with both hands cupped under top end. DB held overhead.",
-          "execution": [
-            "Elbows up by ears, pointed straight up",
-            "Lower DB behind head by bending only the elbows",
-            "Get a deep stretch in the triceps",
-            "Extend back overhead using triceps",
-            "Squeeze at top"
-          ],
-          "target": "10-12 reps with full stretch.",
-          "mistakes": [
-            "Elbows flaring out wide",
-            "Letting elbows drift forward",
-            "Half range"
-          ]
-        },
-        "type": "reps",
-        "reps": "10-12"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Rest",
-        "duration": 25,
-        "blockLabel": "ACCESSORY PAIR D",
-        "roundCurrent": 2,
-        "roundTotal": 3,
-        "detail": "25 sec",
-        "cue": "Switch to DB Russian Twists."
-      },
-      {
-        "phase": "metcon",
-        "name": "DB Russian Twists",
-        "alternatives": [{"name":"Plate Russian Twists","desc":"Same movement with a plate instead of DB. Same rep target."},{"name":"Cable Wood-Chop","desc":"Cable high to low (or low to high), rotate from the trunk. 12/side. Constant tension."},{"name":"Bicycle Crunches",
-        "alternatives": [{"name":"Lying Leg Raises","desc":"Lay flat, raise legs to 90°, lower slowly without touching floor. 12-15 reps."},{"name":"Cable Crunches","desc":"Kneel facing cable, rope behind head, crunch down with abs. Heavier weight option. 15 reps."},{"name":"V-Ups","desc":"Lay flat, simultaneously bring legs and torso up to meet, fingers to toes. 12 reps."}],"desc":"If no weight — bodyweight bicycle crunches. Slow rotation through the trunk. 30 seconds."}],
-        "blockLabel": "ACCESSORY PAIR D",
-        "roundCurrent": 2,
-        "roundTotal": 3,
-        "pair": "D2",
-        "pairWith": "Overhead DB Tricep Ext",
-        "detail": "20 total",
-        "instructions": {
-          "setup": "Sit on floor, knees bent, feet up. Lean back ~45°. One DB at chest.",
-          "execution": [
-            "Twist to right, DB to right hip",
-            "Twist left, DB to left hip",
-            "10/side = 20 total",
-            "Move from the trunk"
-          ],
-          "target": "20 controlled reps."
-        },
-        "type": "reps",
-        "reps": "20 total"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Round Rest",
-        "duration": 30,
-        "blockLabel": "ACCESSORY PAIR D",
-        "roundCurrent": 2,
-        "roundTotal": 3,
-        "detail": "30 sec",
-        "cue": "Recover. Round 3 of 3 up next."
-      },
-      {
-        "phase": "metcon",
-        "name": "Overhead DB Tricep Ext",
+    "blockLabel": "ACCESSORY PAIR D",
+    "roundCurrent": 2,
+    "roundTotal": 3,
+    "pair": "D1",
+    "pairWith": "DB Russian Twists",
+    "detail": "10-12 reps",
+    "instructions": {
+      "setup": "Stand or sit. Hold one moderate DB with both hands cupped under top end. DB held overhead.",
+      "execution": [
+        "Elbows up by ears, pointed straight up",
+        "Lower DB behind head by bending only the elbows",
+        "Get a deep stretch in the triceps",
+        "Extend back overhead using triceps",
+        "Squeeze at top"
+      ],
+      "target": "10-12 reps with full stretch.",
+      "mistakes": [
+        "Elbows flaring out wide",
+        "Letting elbows drift forward",
+        "Half range"
+      ]
+    },
+    "type": "reps",
+    "reps": "10-12"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Rest",
+    "duration": 25,
+    "blockLabel": "ACCESSORY PAIR D",
+    "roundCurrent": 2,
+    "roundTotal": 3,
+    "detail": "25 sec",
+    "cue": "Switch to DB Russian Twists."
+  },
+  {
+    "phase": "metcon",
+    "name": "DB Russian Twists",
+        "alternatives": [{"name":"Plate Russian Twists","desc":"Same movement with a plate instead of DB. Same rep target."},{"name":"Cable Wood-Chop","desc":"Cable high to low (or low to high), rotate from the trunk. 12/side. Constant tension."},{"name":"Bicycle Crunches","desc":"If no weight — bodyweight bicycle crunches. Slow rotation through the trunk. 30 seconds."}],
+    "blockLabel": "ACCESSORY PAIR D",
+    "roundCurrent": 2,
+    "roundTotal": 3,
+    "pair": "D2",
+    "pairWith": "Overhead DB Tricep Ext",
+    "detail": "20 total",
+    "instructions": {
+      "setup": "Sit on floor, knees bent, feet up. Lean back ~45°. One DB at chest.",
+      "execution": [
+        "Twist to right, DB to right hip",
+        "Twist left, DB to left hip",
+        "10/side = 20 total",
+        "Move from the trunk"
+      ],
+      "target": "20 controlled reps."
+    },
+    "type": "reps",
+    "reps": "20 total"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Round Rest",
+    "duration": 30,
+    "blockLabel": "ACCESSORY PAIR D",
+    "roundCurrent": 2,
+    "roundTotal": 3,
+    "detail": "30 sec",
+    "cue": "Recover. Round 3 of 3 up next."
+  },
+  {
+    "phase": "metcon",
+    "name": "Overhead DB Tricep Ext",
         "alternatives": [{"name":"Cable Overhead Tricep Extension","desc":"Rope at low pulley, face away from machine, press overhead and extend. Constant tension on the long head."},{"name":"Single-Arm DB Overhead Extension","desc":"If only one moderate DB available — do one arm at a time. Same rep range each side."},{"name":"Bench Dips","desc":"Hands on bench behind you, feet out. Lower hips, press up. Add a plate on lap for resistance. Hits triceps + some chest."}],
-        "blockLabel": "ACCESSORY PAIR D",
-        "roundCurrent": 3,
-        "roundTotal": 3,
-        "pair": "D1",
-        "pairWith": "DB Russian Twists",
-        "detail": "10-12 reps",
-        "instructions": {
-          "setup": "Stand or sit. Hold one moderate DB with both hands cupped under top end. DB held overhead.",
-          "execution": [
-            "Elbows up by ears, pointed straight up",
-            "Lower DB behind head by bending only the elbows",
-            "Get a deep stretch in the triceps",
-            "Extend back overhead using triceps",
-            "Squeeze at top"
-          ],
-          "target": "10-12 reps with full stretch.",
-          "mistakes": [
-            "Elbows flaring out wide",
-            "Letting elbows drift forward",
-            "Half range"
-          ]
-        },
-        "type": "reps",
-        "reps": "10-12"
-      },
-      {
-        "phase": "rest",
-        "type": "timed",
-        "name": "Rest",
-        "duration": 25,
-        "blockLabel": "ACCESSORY PAIR D",
-        "roundCurrent": 3,
-        "roundTotal": 3,
-        "detail": "25 sec",
-        "cue": "Switch to DB Russian Twists."
-      },
-      {
-        "phase": "metcon",
-        "name": "DB Russian Twists",
-        "alternatives": [{"name":"Plate Russian Twists","desc":"Same movement with a plate instead of DB. Same rep target."},{"name":"Cable Wood-Chop","desc":"Cable high to low (or low to high), rotate from the trunk. 12/side. Constant tension."},{"name":"Bicycle Crunches",
-        "alternatives": [{"name":"Lying Leg Raises","desc":"Lay flat, raise legs to 90°, lower slowly without touching floor. 12-15 reps."},{"name":"Cable Crunches","desc":"Kneel facing cable, rope behind head, crunch down with abs. Heavier weight option. 15 reps."},{"name":"V-Ups","desc":"Lay flat, simultaneously bring legs and torso up to meet, fingers to toes. 12 reps."}],"desc":"If no weight — bodyweight bicycle crunches. Slow rotation through the trunk. 30 seconds."}],
-        "blockLabel": "ACCESSORY PAIR D",
-        "roundCurrent": 3,
-        "roundTotal": 3,
-        "pair": "D2",
-        "pairWith": "Overhead DB Tricep Ext",
-        "detail": "20 total",
-        "instructions": {
-          "setup": "Sit on floor, knees bent, feet up. Lean back ~45°. One DB at chest.",
-          "execution": [
-            "Twist to right, DB to right hip",
-            "Twist left, DB to left hip",
-            "10/side = 20 total",
-            "Move from the trunk"
-          ],
-          "target": "20 controlled reps."
-        },
-        "type": "reps",
-        "reps": "20 total"
-      }
-    ]
+    "blockLabel": "ACCESSORY PAIR D",
+    "roundCurrent": 3,
+    "roundTotal": 3,
+    "pair": "D1",
+    "pairWith": "DB Russian Twists",
+    "detail": "10-12 reps",
+    "instructions": {
+      "setup": "Stand or sit. Hold one moderate DB with both hands cupped under top end. DB held overhead.",
+      "execution": [
+        "Elbows up by ears, pointed straight up",
+        "Lower DB behind head by bending only the elbows",
+        "Get a deep stretch in the triceps",
+        "Extend back overhead using triceps",
+        "Squeeze at top"
+      ],
+      "target": "10-12 reps with full stretch.",
+      "mistakes": [
+        "Elbows flaring out wide",
+        "Letting elbows drift forward",
+        "Half range"
+      ]
+    },
+    "type": "reps",
+    "reps": "10-12"
+  },
+  {
+    "phase": "rest",
+    "type": "timed",
+    "name": "Rest",
+    "duration": 25,
+    "blockLabel": "ACCESSORY PAIR D",
+    "roundCurrent": 3,
+    "roundTotal": 3,
+    "detail": "25 sec",
+    "cue": "Switch to DB Russian Twists."
+  },
+  {
+    "phase": "metcon",
+    "name": "DB Russian Twists",
+        "alternatives": [{"name":"Plate Russian Twists","desc":"Same movement with a plate instead of DB. Same rep target."},{"name":"Cable Wood-Chop","desc":"Cable high to low (or low to high), rotate from the trunk. 12/side. Constant tension."},{"name":"Bicycle Crunches","desc":"If no weight — bodyweight bicycle crunches. Slow rotation through the trunk. 30 seconds."}],
+    "blockLabel": "ACCESSORY PAIR D",
+    "roundCurrent": 3,
+    "roundTotal": 3,
+    "pair": "D2",
+    "pairWith": "Overhead DB Tricep Ext",
+    "detail": "20 total",
+    "instructions": {
+      "setup": "Sit on floor, knees bent, feet up. Lean back ~45°. One DB at chest.",
+      "execution": [
+        "Twist to right, DB to right hip",
+        "Twist left, DB to left hip",
+        "10/side = 20 total",
+        "Move from the trunk"
+      ],
+      "target": "20 controlled reps."
+    },
+    "type": "reps",
+    "reps": "20 total"
+  }
+]
   },
   {
     "id": "lowerB",
