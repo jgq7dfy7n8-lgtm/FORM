@@ -118,10 +118,14 @@
   .jump-arrow { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: rgba(255,255,255,0.55); margin-left: 4px; }
 
   /* ============ RUNNING — CARD ============ */
+  /* Sticky header — stays visible above the scrolling instructions */
+  .sticky-header { flex-shrink: 0; padding: 0 24px 8px; background: linear-gradient(to bottom, #0a0a0a 80%, rgba(10,10,10,0.7) 95%, rgba(10,10,10,0)); position: relative; z-index: 4; }
+  .sticky-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -16px; height: 16px; background: linear-gradient(to bottom, rgba(10,10,10,0.85), rgba(10,10,10,0)); pointer-events: none; }
+
   .card { flex: 1; display: flex; flex-direction: column; padding: 4px 24px 16px; position: relative; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-  .ex-name { font-family: 'Bebas Neue', sans-serif; font-size: 56px; line-height: 0.92; letter-spacing: 0.02em; margin-bottom: 14px; -webkit-text-stroke: 0.6px #fff; }
-  .ex-meta-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-  .meta-pill { font-family: 'Archivo Black', sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 7px 13px; border-radius: 100px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); }
+  .ex-name { font-family: 'Bebas Neue', sans-serif; font-size: 36px; line-height: 0.92; letter-spacing: 0.02em; margin-bottom: 10px; -webkit-text-stroke: 0.5px #fff; }
+  .ex-meta-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .meta-pill { font-family: 'Archivo Black', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 11px; border-radius: 100px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); }
   .meta-pill.accent { background: rgba(0,230,118,0.15); border-color: rgba(0,230,118,0.5); color: #00e676; }
   .meta-pill.pair { background: rgba(255,82,82,0.15); border-color: rgba(255,82,82,0.5); color: #ff5252; }
 
@@ -157,28 +161,29 @@
   .alt-name-tag { font-family: 'Archivo Black', sans-serif; font-size: 9px; color: #40c4ff; padding: 2px 6px; background: rgba(64,196,255,0.18); border-radius: 4px; letter-spacing: 0.1em; margin-right: 8px; vertical-align: middle; position: relative; top: -2px; }
   .alt-desc { font-size: 13px; font-weight: 500; line-height: 1.5; color: rgba(255,255,255,0.8); }
 
-  /* Timer area (only for timed blocks) */
+  /* Timer area — compact for sticky header */
   .next-up-card { background: rgba(0,230,118,0.08); border: 1px solid rgba(0,230,118,0.3); border-left: 3px solid #00e676; border-radius: 12px; padding: 14px 16px; margin: 4px 0 14px; }
   .next-up-label { font-family: 'Archivo Black', sans-serif; font-size: 10px; letter-spacing: 0.28em; color: #00e676; margin-bottom: 6px; text-transform: uppercase; }
   .next-up-name { font-family: 'Bebas Neue', sans-serif; font-size: 32px; line-height: 1; letter-spacing: 0.02em; -webkit-text-stroke: 0.4px #fff; margin-bottom: 10px; color: #fff; }
   .next-up-meta { display: flex; gap: 8px; flex-wrap: wrap; }
-  .timer-area { display: flex; flex-direction: column; align-items: center; padding: 16px 0 8px; gap: 10px; }
-  .timer { font-family: 'Bebas Neue', sans-serif; font-size: 130px; line-height: 1; letter-spacing: 0.01em; color: #fff; font-variant-numeric: tabular-nums; -webkit-text-stroke: 1px #fff; }
-  .timer.rest { color: #40c4ff; -webkit-text-stroke: 1px #40c4ff; }
-  .timer.warmup { color: #ffb74d; -webkit-text-stroke: 1px #ffb74d; }
-  .timer.metcon { color: #ff5252; -webkit-text-stroke: 1px #ff5252; }
-  .timer.paused { opacity: 0.35; }
-  .timer-label { font-family: 'Archivo Black', sans-serif; font-size: 11px; letter-spacing: 0.32em; color: rgba(255,255,255,0.55); text-transform: uppercase; }
-  .timer-controls { display: flex; gap: 10px; margin-top: 4px; }
-  .pause-btn { padding: 13px 30px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.22); color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 0.22em; border-radius: 100px; cursor: pointer; min-width: 140px; }
+  .timer-area { display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 6px 0 4px; gap: 14px; flex-wrap: wrap; }
+  .timer-left { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; flex-shrink: 0; }
+  .timer { font-family: 'Bebas Neue', sans-serif; font-size: 76px; line-height: 0.95; letter-spacing: 0.01em; color: #fff; font-variant-numeric: tabular-nums; -webkit-text-stroke: 0.8px #fff; }
+  .timer.rest { color: #40c4ff; -webkit-text-stroke: 0.8px #40c4ff; }
+  .timer.warmup { color: #ffb74d; -webkit-text-stroke: 0.8px #ffb74d; }
+  .timer.metcon { color: #ff5252; -webkit-text-stroke: 0.8px #ff5252; }
+  .timer.paused { opacity: 0.4; }
+  .timer-label { font-family: 'Archivo Black', sans-serif; font-size: 10px; letter-spacing: 0.32em; color: rgba(255,255,255,0.55); text-transform: uppercase; }
+  .timer-controls { display: flex; gap: 10px; flex-shrink: 0; }
+  .pause-btn { padding: 11px 22px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.22); color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 0.18em; border-radius: 100px; cursor: pointer; min-width: 110px; }
   .pause-btn.paused { background: rgba(0,230,118,0.18); border-color: #00e676; color: #00e676; }
-  .pause-btn.ready { background: #00e676; border-color: #00e676; color: #0a0a0a; padding: 16px 40px; font-size: 19px; box-shadow: 0 6px 22px rgba(0,230,118,0.4); }
+  .pause-btn.ready { background: #00e676; border-color: #00e676; color: #0a0a0a; padding: 13px 28px; font-size: 16px; box-shadow: 0 4px 18px rgba(0,230,118,0.4); }
   .pause-btn:active { transform: scale(0.97); }
 
-  /* Reps display (no timer) */
-  .reps-display { display: flex; flex-direction: column; align-items: center; padding: 16px 0 12px; gap: 8px; }
-  .reps-num { font-family: 'Bebas Neue', sans-serif; font-size: 130px; line-height: 1; letter-spacing: 0.01em; color: #00e676; font-variant-numeric: tabular-nums; -webkit-text-stroke: 1.5px #00e676; }
-  .reps-label { font-family: 'Archivo Black', sans-serif; font-size: 11px; letter-spacing: 0.32em; color: rgba(255,255,255,0.55); text-transform: uppercase; }
+  /* Reps display — compact, same row layout as timer */
+  .reps-display { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; padding: 6px 0 4px; gap: 14px; }
+  .reps-num { font-family: 'Bebas Neue', sans-serif; font-size: 76px; line-height: 0.95; letter-spacing: 0.01em; color: #00e676; font-variant-numeric: tabular-nums; -webkit-text-stroke: 1px #00e676; }
+  .reps-label { font-family: 'Archivo Black', sans-serif; font-size: 10px; letter-spacing: 0.32em; color: rgba(255,255,255,0.55); text-transform: uppercase; }
 
   /* ============ RUNNING — BOTTOM BAR ============ */
   .bottom-bar { flex-shrink: 0; padding: 10px 20px calc(14px + env(safe-area-inset-bottom)); background: linear-gradient(to top, #0a0a0a 60%, rgba(10,10,10,0)); display: flex; flex-direction: column; gap: 8px; }
@@ -6478,18 +6483,22 @@ function renderRunning() {
   let displayHtml = "";
   if (b.type === "timed") {
     const tcls = colorClass;
-    const timerCls = isRest ? tcls : "paused " + tcls;  // rest = running (no paused class); active = paused awaiting tap
+    const timerCls = isRest ? tcls : "paused " + tcls;
     const btnText = isRest ? "❚❚  PAUSE" : "▶  START";
     const btnCls = isRest ? "pause-btn" : "pause-btn ready";
     displayHtml = '<div class="timer-area">' +
-      '<div class="timer-label">' + (isRest ? "REST" : "TIME") + '</div>' +
-      '<div class="timer ' + timerCls + '" id="timer-num">' + fmt(state.timeLeft) + '</div>' +
+      '<div class="timer-left">' +
+        '<div class="timer-label">' + (isRest ? "REST" : "TIME") + '</div>' +
+        '<div class="timer ' + timerCls + '" id="timer-num">' + fmt(state.timeLeft) + '</div>' +
+      '</div>' +
       '<div class="timer-controls"><button class="' + btnCls + '" id="pause-btn">' + btnText + '</button></div>' +
       '</div>';
   } else if (b.type === "reps") {
     displayHtml = '<div class="reps-display">' +
-      '<div class="reps-label">REPS</div>' +
-      '<div class="reps-num">' + b.reps + '</div>' +
+      '<div class="timer-left">' +
+        '<div class="reps-label">REPS</div>' +
+        '<div class="reps-num">' + b.reps + '</div>' +
+      '</div>' +
       '</div>';
   }
 
@@ -6504,18 +6513,20 @@ function renderRunning() {
       '<button class="back" id="exit-btn" style="text-align:right;">Exit</button>' +
     '</div>' +
     jumpHtml +
-    '<div class="card-wrap">' +
-    '<div class="card" id="card-scroll">' +
+    '<div class="sticky-header">' +
       '<div class="ex-name">' + b.name.toUpperCase() + '</div>' +
       '<div class="ex-meta-row">' +
         '<span class="meta-pill accent">' + b.detail + '</span>' +
         (b.pair ? '<span class="meta-pill pair">' + b.pair + '</span>' : '') +
       '</div>' +
+      displayHtml +
+    '</div>' +
+    '<div class="card-wrap">' +
+    '<div class="card" id="card-scroll">' +
       pairHtml +
       insHtml +
       altsHtml +
       nextUpHtml +
-      displayHtml +
     '</div>' +
     '<div class="scroll-hint" id="scroll-hint">↓ SCROLL FOR MORE</div>' +
     '</div>' +
